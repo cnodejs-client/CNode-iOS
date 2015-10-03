@@ -26,4 +26,3 @@
 #import "UIActionSheet_Blocks/UIActionSheet+Blocks.h"
 #import "UIBarButtonItem_Badge/UIBarButtonItem+Badge.h"
 #import "ZBarSDK/ZBarSDK.h"
-#import "hpple/TFHpple.h"
