@@ -19,6 +19,7 @@ import SnapKit
 
 class TopicCell: UITableViewCell {
     
+    var title: UILabel = UILabel()
     var avatar: UIImageView = UIImageView()
     var author: UILabel = UILabel()
     var create_at: UILabel = UILabel()
@@ -26,23 +27,29 @@ class TopicCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        self.textLabel?.numberOfLines = 0
-
-        self.contentView.addSubview(avatar)
-        self.contentView.addSubview(author)
-        self.contentView.addSubview(create_at)
+        self.contentView.addSubview(self.title)
+        self.contentView.addSubview(self.avatar)
+        self.contentView.addSubview(self.author)
+        self.contentView.addSubview(self.create_at)
+        // temp code
+        self.title.backgroundColor = UIColor.grayColor()
     }
     
     func bind(data: Topic) -> CGFloat {
-        self.textLabel?.text = data.title
+        self.title.frame = CGRectMake(0, 0, 200, 50)
+        
+        self.title.text = data.title//! + data.title! + data.title!
         self.author.text = data.author?.loginname
         self.create_at.text = data.create_at
         // 计算Cell高度
+        self.title.numberOfLines = 0
+        self.title.lineBreakMode = NSLineBreakMode.ByWordWrapping
         
-        self.textLabel?.frame = CGRect(x:15, y:10, width: self.contentView.bounds.size.width-30, height:100)
-        self.textLabel?.sizeToFit()
-        self.layoutIfNeeded()
+//        self.title.sizeToFit()
+//        self.title.layoutIfNeeded()
+//        self.layoutIfNeeded()
+
         // 绑定并计算Cell高度
-        return (self.textLabel?.frame.height)!
+        return (self.title.frame.height)
     }
 }

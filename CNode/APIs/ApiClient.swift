@@ -116,8 +116,8 @@ class ApiClient {
                 if (isError(result.error, failure: failure)) {
                     return
                 }
-                let json = JSON(result.value!)
-                print(json)
+//                let json = JSON(result.value!)
+//                print(json)
 
                 let topics = Mapper<Topic>().mapArray(result.value!["data"])
                 success(data: topics!)
