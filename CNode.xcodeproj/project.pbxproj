@@ -117,6 +117,7 @@
 		87A9E308BC4C3FCB5FAA1254 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				87A9ECADE3B0B3C7F3EECDC1 /* HUD.swift */,
 				87A9EABDBC1601A3F8F49D9A /* Delay.swift */,
 			);
 			path = Utils;
@@ -126,7 +127,6 @@
 			isa = PBXGroup;
 			children = (
 				87A9EF2B532E7C0E57BF8D2C /* ButtonBarViewCell.xib */,
-				87A9ECADE3B0B3C7F3EECDC1 /* HUD.swift */,
 				87A9ECD8C00B2F638D43EC96 /* Cells */,
 				87A9EFAFFFC474EFFF791A0F /* MyProfileView.swift */,
 			);

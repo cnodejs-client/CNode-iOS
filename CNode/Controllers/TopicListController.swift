@@ -80,7 +80,6 @@ class TopicListController: BaseListController<Topic>, XLPagerTabStripChildItem {
             (code: Int, message: String) -> Void in
             self.endRefreshing()
         };
-        // 类别ID 1-问答 2-分享 3-IT杂烩(综合) 4-站务 100-职业生涯 0-所有
         switch (flag) {
         case .All:
             ApiClient.topicList(page, tab: "all", success: success, failure: failure)
@@ -105,7 +104,7 @@ class TopicListController: BaseListController<Topic>, XLPagerTabStripChildItem {
 
         let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
         cell.textLabel!.text = topic.title
-        cell.detailTextLabel!.text = topic.content
+//        cell.detailTextLabel!.text = topic.content
         cell.accessoryType = .DisclosureIndicator
         return cell
     }
