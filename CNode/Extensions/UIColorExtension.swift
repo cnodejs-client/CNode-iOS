@@ -61,7 +61,7 @@ extension UIColor {
 
     class func primaryColor() -> UIColor {
     	// #41ab54
-        return UIColor(rgba: "#80bd01")
+        return UIColor(rgba: "#444444")
     }
     
     class func primaryTextColor() -> UIColor {

@@ -102,10 +102,8 @@ class TopicListController: BaseListController<Topic>, XLPagerTabStripChildItem {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let topic: Topic = self.dataSource[indexPath.row]
 
-        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
-        cell.textLabel!.text = topic.title
-//        cell.detailTextLabel!.text = topic.content
-        cell.accessoryType = .DisclosureIndicator
+        let cell = TopicCell()
+        cell.bind(topic)
         return cell
     }
 
@@ -116,6 +114,12 @@ class TopicListController: BaseListController<Topic>, XLPagerTabStripChildItem {
         //        let controller: TweetDetailController = TweetDetailController(nibName: nil, bundle: nil)
         //        controller.hidesBottomBarWhenPushed = true
         //        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let topic: Topic = self.dataSource[indexPath.row]
+        let cell = TopicCell()
+        return cell.bind(topic)
     }
 
 }

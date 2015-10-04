@@ -16,7 +16,7 @@
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="highlightedColor" red="0.25490196078431371" green="0.6705882352941176" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="highlightedColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                 </label>
             </subviews>
             <animations/>

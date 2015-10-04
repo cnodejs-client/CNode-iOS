@@ -40,6 +40,7 @@
 		F55CD18F1BBFD9760025DE02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55CD18E1BBFD9760025DE02 /* AppDelegate.swift */; };
 		F55CD1961BBFD9760025DE02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55CD1951BBFD9760025DE02 /* Assets.xcassets */; };
 		F55CD1991BBFD9760025DE02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F55CD1971BBFD9760025DE02 /* LaunchScreen.storyboard */; };
+		F5E01D131BC0D7340090242C /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E01D121BC0D7340090242C /* TopicCell.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		F55CD1951BBFD9760025DE02 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F55CD1981BBFD9760025DE02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F55CD19A1BBFD9760025DE02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5E01D121BC0D7340090242C /* TopicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				87A9EE5B0130581114445E4C /* TextFieldCell.swift */,
+				F5E01D121BC0D7340090242C /* TopicCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F55CD18F1BBFD9760025DE02 /* AppDelegate.swift in Sources */,
+				F5E01D131BC0D7340090242C /* TopicCell.swift in Sources */,
 				87A9EC304040E0CD708E7B77 /* URLs.swift in Sources */,
 				87A9E3CC20CF840F7AD25AFD /* ApiClient.swift in Sources */,
 				87A9ECB20EEEFE7CB97D8BC6 /* BaseListController.swift in Sources */,
