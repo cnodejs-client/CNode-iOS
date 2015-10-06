@@ -24,7 +24,7 @@ class TopicCell: UITableViewCell {
     var avatar: UIImageView = UIImageView()
     var author: UILabel = UILabel()
     var create_at: UILabel = UILabel()
-    
+
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -74,7 +74,6 @@ class TopicCell: UITableViewCell {
             make.edges.equalTo(self)
             make.bottom.equalTo(self.author.snp_bottom).inset(-padding.bottom)
         }
-        
     }
 
     required init?(coder aDecoder: NSCoder) {
