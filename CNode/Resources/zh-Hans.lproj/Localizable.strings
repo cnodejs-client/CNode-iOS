@@ -17,7 +17,7 @@
 "APP_NAME" = "CNode";
 
 // Controller
-"TITLE_TOPIC" = "主题";
+"TITLE_TOPIC" = "话题";
 "TITLE_COLLECT" = "收藏";
 "TITLE_MESSAGE" = "消息";
 "TITLE_MY" = "我的";
@@ -26,7 +26,7 @@
 "TITLE_ABOUT" = "关于";
 
 // TabBar
-"TAB_TOPIC" = "主题";
+"TAB_TOPIC" = "话题";
 "TAB_COLLECT" = "收藏";
 "TAB_MESSAGE" = "消息";
 "TAB_MY" = "我的";
@@ -38,6 +38,7 @@
 "ACTION_SAVE" = "保存";
 "ACTION_SETTINGS" = "设置";
 "ACTION_LOGIN" = "登录";
+"ACTION_PUBLISH_TOPIC" = "发布";
 
 // TopicList
 "TAB_TOPIC_LIST_ALL" = "全部";

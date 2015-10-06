@@ -49,7 +49,7 @@ class TopicController: BaseButtonBarPagerTabStripViewController {
         return [controller1, controller2, controller3, controller4, controller5]
     }
     
-    func publishTopic() {
+    func publishTopic(sender: UIBarButtonItem) {
         let controller: PublishTopicController = PublishTopicController()
         self.presentViewController(controller, animated: true, leftButtonType: .Cancel)
     }

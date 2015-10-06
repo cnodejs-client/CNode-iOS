@@ -43,6 +43,9 @@ class TopicListController: BaseListController<Topic>, XLPagerTabStripChildItem {
         super.viewDidLoad()
         
         self.tableView.registerClass(TopicCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 44.0
+        
         self.firstRefreshing()
     }
 
@@ -107,17 +110,10 @@ class TopicListController: BaseListController<Topic>, XLPagerTabStripChildItem {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: TopicCell? = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TopicCell
-        if (cell == nil) {
-            print("创建cell")
-            cell = TopicCell()
-        }
+        let cell: TopicCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TopicCell
         let topic: Topic = self.dataSource[indexPath.row]
-
-//        let cell = TopicCell()
-        let height = cell!.bind(topic)
-        self.heights.updateValue(height, forKey: indexPath.row)
-        return cell!
+        cell.bind(topic)
+        return cell
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -128,17 +124,4 @@ class TopicListController: BaseListController<Topic>, XLPagerTabStripChildItem {
         controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)
     }
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if let h = heights[indexPath.row] {
-            print("\(indexPath.row)|\(h)")
-            return h
-        }
-//        let topic: Topic = self.dataSource[indexPath.row]
-//        let cell = TopicCell()
-//        let h2 = cell.bind(topic)
-//        heights[indexPath.row] = h2
-        return 20
-    }
-
 }
