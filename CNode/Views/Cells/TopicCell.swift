@@ -25,9 +25,9 @@ class TopicCell: UITableViewCell {
     var author: UILabel = UILabel()
     var create_at: UILabel = UILabel()
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         self.contentView.addSubview(self.titleLabel)
         self.contentView.addSubview(self.bodyLabel)
         self.contentView.addSubview(self.avatar)
@@ -70,14 +70,15 @@ class TopicCell: UITableViewCell {
             make.left.equalTo(self.author.snp_right).inset(-5)
             make.centerY.equalTo(self.author)
         }
-        
         self.contentView.snp_makeConstraints { (make) -> Void in
             make.edges.equalTo(self)
             make.bottom.equalTo(self.author.snp_bottom).inset(-padding.bottom)
         }
         
-//        // temp code
-//        self.titleLabel.backgroundColor = UIColor.grayColor()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func bind(data: Topic) -> CGFloat {
@@ -85,8 +86,8 @@ class TopicCell: UITableViewCell {
         self.author.text = data.author?.loginname
         self.create_at.text = data.create_at
         self.avatar.sd_setImageWithURL(NSURL(string: data.author!.avatar_url!))
-        self.layoutIfNeeded()
+        self.setNeedsLayout()
         return 0
     }
-    
+
 }
