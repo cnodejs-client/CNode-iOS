@@ -124,9 +124,9 @@ class TopicListController: BaseListController<Topic>, XLPagerTabStripChildItem {
         let cell: UITableViewCell? = tableView.cellForRowAtIndexPath(indexPath)
         cell?.selected = false
 
-        //        let controller: TweetDetailController = TweetDetailController(nibName: nil, bundle: nil)
-        //        controller.hidesBottomBarWhenPushed = true
-        //        self.navigationController?.pushViewController(controller, animated: true)
+        let controller: TopicDetailController = TopicDetailController()
+        controller.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -138,7 +138,7 @@ class TopicListController: BaseListController<Topic>, XLPagerTabStripChildItem {
 //        let cell = TopicCell()
 //        let h2 = cell.bind(topic)
 //        heights[indexPath.row] = h2
-        return 44
+        return 20
     }
 
 }

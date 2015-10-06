@@ -19,9 +19,14 @@ import XLPagerTabStrip
 
 class TopicController: BaseButtonBarPagerTabStripViewController {
     
+    var btnPublishTopic: UIBarButtonItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "TITLE_TOPIC".localized
+        
+        self.btnPublishTopic = UIBarButtonItem(title: "ACTION_PUBLISH_TOPIC".localized, style: .Plain, target: self, action: "publishTopic:")
+        self.navigationItem.rightBarButtonItem = btnPublishTopic
     }
     
     override func childViewControllersForPagerTabStripViewController(pagerTabStripViewController: XLPagerTabStripViewController!) -> [AnyObject]! {
@@ -42,5 +47,10 @@ class TopicController: BaseButtonBarPagerTabStripViewController {
         controller4.tableView.scrollIndicatorInsets = self.scrollIndicatorInsets()
         controller5.tableView.scrollIndicatorInsets = self.scrollIndicatorInsets()
         return [controller1, controller2, controller3, controller4, controller5]
+    }
+    
+    func publishTopic() {
+        let controller: PublishTopicController = PublishTopicController()
+        self.presentViewController(controller, animated: true, leftButtonType: .Cancel)
     }
 }
