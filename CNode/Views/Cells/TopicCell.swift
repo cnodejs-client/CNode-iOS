@@ -85,7 +85,7 @@ class TopicCell: UITableViewCell {
         self.author.text = data.author?.loginname
         self.create_at.text = data.create_at
         self.avatar.sd_setImageWithURL(NSURL(string: data.author!.avatar_url!))
-        self.layoutIfNeeded()
+//        self.layoutIfNeeded()
         return 0
     }
     

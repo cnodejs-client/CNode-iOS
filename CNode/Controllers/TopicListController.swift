@@ -113,6 +113,10 @@ class TopicListController: BaseListController<Topic>, XLPagerTabStripChildItem {
         let cell: TopicCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TopicCell
         let topic: Topic = self.dataSource[indexPath.row]
         cell.bind(topic)
+        
+        // Make sure the constraints have been added to this cell, since it may have just been created from scratch
+        cell.setNeedsUpdateConstraints()
+        cell.updateConstraintsIfNeeded()
         return cell
     }
 
