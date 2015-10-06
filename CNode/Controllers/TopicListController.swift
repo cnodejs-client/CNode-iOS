@@ -83,18 +83,23 @@ class TopicListController: BaseListController<Topic>, XLPagerTabStripChildItem {
             self.endRefreshing()
         };
         switch (flag) {
+            // 全部
         case .All:
             ApiClient.topicList(page, tab: "all", success: success, failure: failure)
             break
+            // 精华
         case .Good:
             ApiClient.topicList(page, tab: "good", success: success, failure: failure)
             break
+            // 分享
         case .Share:
             ApiClient.topicList(page, tab: "share", success: success, failure: failure)
             break
+            // 问答
         case .Ask:
             ApiClient.topicList(page, tab: "ask", success: success, failure: failure)
             break
+            // 招聘
         case .Job:
             ApiClient.topicList(page, tab: "job", success: success, failure: failure)
             break
