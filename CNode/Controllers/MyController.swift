@@ -19,7 +19,7 @@ import SDWebImage
 
 class MyController: BaseGroupedListController {
     // section 1
-    let CELL_MY_TWEETS   : String = "ID_CELL_MY_TWEETS"
+    let CELL_MY_PROFILE  : String = "ID_CELL_MY_PROFILE"
     let CELL_MY_BLOG     : String = "ID_CELL_MY_BLOG"
     let CELL_MY_FAVORITES: String = "ID_CELL_MY_FAVORITES"
     // section 2
@@ -27,7 +27,6 @@ class MyController: BaseGroupedListController {
     let CELL_MY_TEAMS    : String = "ID_CELL_MY_TEAMS"
 
     var btnSettings: UIBarButtonItem?
-    var mpvInfo: MyProfileCell = MyProfileCell()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,28 +37,16 @@ class MyController: BaseGroupedListController {
         
         self.navigationController?.navigationBar.shadowImage = UIImage();
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        // 设置 headerView
-        self.tableView.tableHeaderView = mpvInfo
-        self.tableView.contentInset = UIEdgeInsetsMake(-620, 0, 0, 0)
-        // 设置事件
         
-        let tapAvatar = UITapGestureRecognizer(target: self, action: Selector("tapAvatarOrName"))
-        let tapName = UITapGestureRecognizer(target: self, action: Selector("tapAvatarOrName"))
-        self.mpvInfo.avatar.addGestureRecognizer(tapAvatar)
-        self.mpvInfo.name.addGestureRecognizer(tapName)
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 44.0
 
-        self.tableView.estimatedRowHeight = 88; // 设置为一个接近“平均”行高的值
-        self.tableView.rowHeight = UITableViewAutomaticDimension;
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if (User.isLogged()) {
-            let user: User = User.current()!
-            self.mpvInfo.bind(user)
-        } else {
+        if (!User.isLogged()) {
             self.navigationItem.leftBarButtonItem = nil
-            self.mpvInfo.bind(nil)
         }
         self.tableView.reloadData()
     }
@@ -76,7 +63,7 @@ class MyController: BaseGroupedListController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (section) {
         case 0:
-            return 3
+            return 1
         case 1:
             return 2
         default:
@@ -87,14 +74,16 @@ class MyController: BaseGroupedListController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var title: String = "";
         var identifier: String = "";
-        var count: Int = 0
         switch (indexPath.section) {
         case 0:
             switch (indexPath.row) {
             case 0:
                 title = "我的动弹"
-                identifier = CELL_MY_TWEETS
-                break
+                identifier = CELL_MY_PROFILE
+                let cell = MyProfileCell()
+                cell.bind(User.current()!)
+                cell.restorationIdentifier = identifier
+                return cell
             case 1:
                 title = "我的博客"
                 identifier = CELL_MY_BLOG
@@ -129,11 +118,6 @@ class MyController: BaseGroupedListController {
         }
         let cell = UITableViewCell(style: .Value1, reuseIdentifier: "Cell")
         cell.textLabel?.text = title
-        if (count > 0) {
-            cell.detailTextLabel?.text = "\(count)"
-        } else {
-            cell.detailTextLabel?.text = ""
-        }
         cell.restorationIdentifier = identifier
         cell.accessoryType = .DisclosureIndicator
         return cell
@@ -141,12 +125,12 @@ class MyController: BaseGroupedListController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell: UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
-        if (!User.isLogged()) {
-            tapAvatarOrName()
-            return
-        }
         switch (cell.restorationIdentifier!) {
-        case CELL_MY_TWEETS:
+        case CELL_MY_PROFILE:
+            if (!User.isLogged()) {
+                let controller: LoginController = LoginController()
+                self.presentViewController(controller, animated: true, leftButtonType: .Cancel)
+            }
 //            let controller: TweetListController = TweetListController(flag: .My)
 //            controller.hidesBottomBarWhenPushed = true
 //            self.navigationController?.pushViewController(controller, animated: true)
@@ -179,7 +163,7 @@ class MyController: BaseGroupedListController {
 
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if (section == 0) {
-            return CGFloat(30)
+            return CGFloat.min
         }
         return super.tableView(tableView, heightForHeaderInSection: section)
     }
@@ -189,13 +173,6 @@ class MyController: BaseGroupedListController {
             return nil
         }
         return super.tableView(tableView, viewForHeaderInSection: section)
-    }
-    
-    func tapAvatarOrName() {
-        if (!User.isLogged()) {
-            let controller: LoginController = LoginController()
-            self.presentViewController(controller, animated: true, leftButtonType: .Cancel)
-        }
     }
 
     func settings(sender: UIBarButtonItem) {
