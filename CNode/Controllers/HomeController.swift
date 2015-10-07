@@ -23,7 +23,7 @@ class HomeController: BaseTabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.topicController     = TopicController()
-        self.messagesController  = MessageSController()
+        self.messagesController  = MessagesController()
         self.myController        = MyController()
         
         // 增加Tab
