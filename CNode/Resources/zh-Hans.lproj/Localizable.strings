@@ -19,16 +19,18 @@
 // Controller
 "TITLE_TOPIC" = "话题";
 "TITLE_COLLECT" = "收藏";
-"TITLE_MESSAGE" = "消息";
+"TITLE_MESSAGES" = "消息";
 "TITLE_MY" = "我的";
 "TITLE_SETTINGS" = "设置";
 "TITLE_LOGIN" = "登录";
 "TITLE_ABOUT" = "关于";
+"TITLE_PUBLISH_TOPIC" = "发布话题";
+"TITLE_TOPIC_DETAIL" = "话题详情";
 
 // TabBar
 "TAB_TOPIC" = "话题";
 "TAB_COLLECT" = "收藏";
-"TAB_MESSAGE" = "消息";
+"TAB_MESSAGES" = "消息";
 "TAB_MY" = "我的";
 
 // Action

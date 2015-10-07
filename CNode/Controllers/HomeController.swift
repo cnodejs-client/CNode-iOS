@@ -17,21 +17,18 @@
 class HomeController: BaseTabBarController {
     
     var topicController    : TopicController?       // 主题
-    var collectController  : CollectController?     // 收藏
-    var messageController  : MessageController?     // 消息
+    var messagesController : MessagesController?    // 消息
     var myController       : MyController?          // 我的
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.topicController     = TopicController()
-        self.collectController   = CollectController()
-        self.messageController   = MessageController()
+        self.messagesController  = MessageSController()
         self.myController        = MyController()
         
         // 增加Tab
         self.addTab("TAB_TOPIC".localized    , icon: "ic_tab_topic"    , controller: self.topicController)
-        self.addTab("TAB_COLLECT".localized  , icon: "ic_tab_post"     , controller: self.collectController)
-        self.addTab("TAB_MESSAGE".localized  , icon: "ic_tab_messages" , controller: self.messageController)
+        self.addTab("TAB_MESSAGES".localized  , icon: "ic_tab_messages" , controller: self.messagesController)
         self.addTab("TAB_MY".localized       , icon: "ic_tab_my"       , controller: self.myController)
     }
     
