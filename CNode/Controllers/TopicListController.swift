@@ -18,11 +18,11 @@ import UIKit
 import XLPagerTabStrip
 
 enum TopicListFlag {
-    case All
-    case Good
-    case Share
-    case Ask
-    case Job
+    case All    // 全部
+    case Good   // 精华
+    case Share  // 分享
+    case Ask    // 问答
+    case Job    // 招聘
 }
 
 class TopicListController: BaseListController<Topic>, XLPagerTabStripChildItem {
@@ -37,17 +37,13 @@ class TopicListController: BaseListController<Topic>, XLPagerTabStripChildItem {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    var _heights: [String: CGFloat] = [:]
-    var _stubCell: TopicCell = TopicCell()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.registerClass(TopicCell.self, forCellReuseIdentifier: "Cell")
-//        self.tableView.rowHeight = UITableViewAutomaticDimension
-//        self.tableView.estimatedRowHeight = 44.0
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 44.0
         
         self.firstRefreshing()
     }
@@ -116,10 +112,6 @@ class TopicListController: BaseListController<Topic>, XLPagerTabStripChildItem {
         let cell: TopicCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TopicCell
         let topic: Topic = self.dataSource[indexPath.row]
         cell.bind(topic)
-        
-        // Make sure the constraints have been added to this cell, since it may have just been created from scratch
-        cell.setNeedsUpdateConstraints()
-        cell.updateConstraintsIfNeeded()
         return cell
     }
 
@@ -130,16 +122,5 @@ class TopicListController: BaseListController<Topic>, XLPagerTabStripChildItem {
         let controller: TopicDetailController = TopicDetailController()
         controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    var heights :[Int: CGFloat] = [:]
-
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let topic: Topic = self.dataSource[indexPath.row]
-        return self.tableView.fd_heightForCellWithIdentifier("Cell", cacheByKey: topic.id) { (cell) -> Void in
-            let _cell = cell as! TopicCell
-            _cell.bind(topic)
-            _cell.layoutSubviews()
-        }
     }
 }

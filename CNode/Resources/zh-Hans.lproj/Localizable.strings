@@ -41,6 +41,7 @@
 "ACTION_SETTINGS" = "设置";
 "ACTION_LOGIN" = "登录";
 "ACTION_PUBLISH_TOPIC" = "发布";
+"ACTION_MARK_ALL_AS_READ" = "忽略未读";
 
 // TopicList
 "TAB_TOPIC_LIST_ALL" = "全部";

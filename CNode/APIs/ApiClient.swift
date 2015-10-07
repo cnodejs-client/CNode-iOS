@@ -22,12 +22,36 @@ import Ono
 class ApiClient {
     static let PAGE_SIZE: Int = 20
     
+    static func isSuccess(result: Result<AnyObject>, failure: (code: Int, message: String) -> Void) -> Bool {
+        if (result.error != nil) {
+            failure(code: -1, message: "网络发生异常")
+            return false
+        } else {
+            let json = JSON(result.value!)
+            if let msg = json["error_msg"].string {
+                failure(code: -1, message: msg)
+                return false
+            }
+        }
+        return true
+    }
+    
     static func isError(error: ErrorType?, failure: (code: Int, message: String) -> Void) -> Bool {
         if (error != nil) {
             failure(code: -1, message: "网络发生异常")
             return true
         }
         return false
+    }
+    
+    // MAKE: 获取html页面的body部分
+    static func body(html: String, begin: String, end: String) -> ONOXMLDocument {
+        let exp = try! NSRegularExpression(pattern: "\(begin)[\\s\\S]*\(end)", options: NSRegularExpressionOptions.CaseInsensitive)
+        let matches = exp.firstMatchInString(html as String, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, html.characters.count))
+        print(matches?.range)
+        let _html: NSString = (html as NSString).substringWithRange(matches!.range)
+        //        print(html)
+        return try! ONOXMLDocument(string: _html as String, encoding: NSUTF8StringEncoding)
     }
 
     static func _csrf(success: (data:String) -> Void, failure: (code:Int, message:String) -> Void) {
@@ -101,9 +125,9 @@ class ApiClient {
                 success(data: user)
         }
     }
+
     // MAKE: 主题列表
     static func topicList(page: Int, tab: String, success: (data:[Topic]) -> Void, failure: (code:Int, message:String) -> Void) {
-        // 类别ID 1-问答 2-分享 3-IT杂烩(综合) 4-站务 100-职业生涯 0-所有
         let parameters: [String: AnyObject] = [
             "tab": tab,
             "page": page,
@@ -116,22 +140,103 @@ class ApiClient {
                 if (isError(result.error, failure: failure)) {
                     return
                 }
-//                let json = JSON(result.value!)
-//                print(json)
 
                 let topics = Mapper<Topic>().mapArray(result.value!["data"])
                 success(data: topics!)
         }
     }
-
-    // MAKE: 获取html页面的body部分
-    static func body(html: String, begin: String, end: String) -> ONOXMLDocument {
-        let exp = try! NSRegularExpression(pattern: "\(begin)[\\s\\S]*\(end)", options: NSRegularExpressionOptions.CaseInsensitive)
-        let matches = exp.firstMatchInString(html as String, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, html.characters.count))
-        print(matches?.range)
-        let _html: NSString = (html as NSString).substringWithRange(matches!.range)
-//        print(html)
-        return try! ONOXMLDocument(string: _html as String, encoding: NSUTF8StringEncoding)
-    }
     
+    // MAKE: 获取话题详情
+    static func topicDetail(id: String, success: (data:Topic) -> Void, failure: (code:Int, message:String) -> Void) {
+        let parameters: [String: AnyObject] = [
+            "mdrender": "false"
+        ]
+        Alamofire.request(.GET, URLs.TOPIC_DETAIL + id, parameters: parameters)
+            .responseJSON {
+                (request, response, result) -> Void in
+                // 请求是否发生错误
+                if (!isSuccess(result, failure: failure)) {
+                    return
+                }
+                
+                let topic = Mapper<Topic>().map(result.value!["data"])
+                success(data: topic!)
+        }
+    }
+
+    // MAKE: 获取未读消息数
+    static func unreadMessageCount(success: (data:Int) -> Void, failure: (code:Int, message:String) -> Void) {
+        var token: String = ""
+        if (User.isLogged()) {
+            token = User.current()!.token!
+        }
+        let parameters: [String: AnyObject] = [
+            "accesstoken": token
+        ]
+        
+        Alamofire.request(.GET, URLs.MESSAGE_COUNT, parameters: parameters)
+            .responseJSON {
+                (request, response, result) -> Void in
+                // 请求是否发生错误
+                if (!isSuccess(result, failure: failure)) {
+                    return
+                }
+                
+                var unreadCount = result.value!["data"] as! Int
+                unreadCount += 18
+                success(data: unreadCount)
+        }
+    }
+
+    // MAKE: 获取消息列表（把已读和未读消息整合在一起）
+    static func messageList(success: (data:[Message]) -> Void, failure: (code:Int, message:String) -> Void) {
+        var token: String = ""
+        if (User.isLogged()) {
+            token = User.current()!.token!
+        }
+        let parameters: [String: AnyObject] = [
+            "accesstoken": token
+        ]
+        
+        Alamofire.request(.GET, URLs.MESSAGE_LIST, parameters: parameters)
+            .responseJSON {
+                (request, response, result) -> Void in
+                // 请求是否发生错误
+                if (!isSuccess(result, failure: failure)) {
+                    return
+                }
+                
+                let messagesResult: MessagesResult = Mapper<MessagesResult>().map(result.value!["data"])!
+                
+                var messages: [Message] = []
+
+                messages += messagesResult.has_read_messages
+                messages += messagesResult.hasnot_read_messages
+                // TODO: 按时间排序
+                success(data: messages)
+        }
+    }
+
+    // MAKE: 标记所有消息为已读
+    static func markAllAsRead(success: (data:Bool) -> Void, failure: (code:Int, message:String) -> Void) {
+        var token: String = ""
+        if (User.isLogged()) {
+            token = User.current()!.token!
+        }
+        let parameters: [String: AnyObject] = [
+            "accesstoken": token
+        ]
+
+        Alamofire.request(.POST, URLs.MESSAGE_MARK_ALL_AS_READ, parameters: parameters)
+            .responseJSON {
+                (request, response, result) -> Void in
+                // 请求是否发生错误
+                if (!isSuccess(result, failure: failure)) {
+                    return
+                }
+                
+                let messages = Mapper<Message>().mapArray(result.value!["data"])
+                success(data: messages!.count > 0)
+        }
+    }
 }

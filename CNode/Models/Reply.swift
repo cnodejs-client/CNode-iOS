@@ -16,40 +16,24 @@
 
 import ObjectMapper
 
-class Topic: Mappable {
+class Reply: Mappable {
     var id: String?             // Id
-    var author_id: String?      // 作者Id
-    var tab: String?            // 标签
     var content: String?        // 内容
-    var title: String?          // 标题
-    var last_reply_at: String?  // 最后回复时间
-    var good: Bool = false      // 精华
-    var top: Bool = false       // 置顶
-    var reply_count: Int = 0    // 回复数
-    var visit_count: Int = 0    // 阅读数
+    var ups: [String]?          // ups
     var create_at: String?      // 发表时间
     var author: User?           // 作者
-    var replies: [Reply]?         // 评论列表
-
+    
     init() { }
-
+    
     required init?(_ map: Map){
     }
-
+    
     // Mappable
     func mapping(map: Map) {
         id              <- map["id"]
-        author_id       <- map["author_id"]
-        tab             <- map["tab"]
         content         <- map["content"]
-        title           <- map["title"]
-        last_reply_at   <- map["last_reply_at"]
-        good            <- map["good"]
-        top             <- map["top"]
-        reply_count     <- map["reply_count"]
-        visit_count     <- map["visit_count"]
+        ups             <- map["ups"]
         create_at       <- map["create_at"]
         author          <- map["author"]
-        replies         <- map["replies"]
     }
 }

@@ -16,10 +16,16 @@
 
 struct URLs {
     static let baseURL: String = "https://cnodejs.org"
+    static let apiVersion: String = "/api/v1"
     // user
     static let LOGIN: String = baseURL + "/signin"
     static let SETTING: String = baseURL + "/setting"
-    static let PROFILE: String = baseURL + "/api/v1/user/"
+    static let PROFILE: String = baseURL + apiVersion + "/user/"
     // topics
-    static let TOPIC_LIST: String = baseURL + "/api/v1/topics"
+    static let TOPIC_LIST: String = baseURL + apiVersion + "/topics"
+    static let TOPIC_DETAIL: String = baseURL + apiVersion + "/topic/"
+    // messages
+    static let MESSAGE_COUNT: String = baseURL + apiVersion + "/message/count"
+    static let MESSAGE_LIST: String = baseURL + apiVersion + "/messages"
+    static let MESSAGE_MARK_ALL_AS_READ: String = baseURL + apiVersion + "/messages/mark_all"
 }

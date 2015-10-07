@@ -28,19 +28,31 @@ class HomeController: BaseTabBarController {
         
         // 增加Tab
         self.addTab("TAB_TOPIC".localized    , icon: "ic_tab_topic"    , controller: self.topicController)
-        self.addTab("TAB_MESSAGES".localized  , icon: "ic_tab_messages" , controller: self.messagesController)
+        self.addTab("TAB_MESSAGES".localized , icon: "ic_tab_messages" , controller: self.messagesController)
         self.addTab("TAB_MY".localized       , icon: "ic_tab_my"       , controller: self.myController)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-//        if (User.isLogged()) {
-//            // 显示未读消息数
-//            let noticeCount: Int = Notice.current()!.count()
-//            self.myController!.tabBarItem.badgeValue = noticeCount > 0 ? "\(noticeCount)" : nil
-//        } else {
-//            self.myController!.tabBarItem.badgeValue = nil
-//        }
+        if (User.isLogged()) {
+            // 显示未读消息数
+            ApiClient.unreadMessageCount({
+                (data: Int) -> Void in
+                var unreadStr: String? = ""
+                if (data > 99) {
+                    unreadStr = "99+"
+                } else if (data > 0) {
+                    unreadStr = "\(data)"
+                } else {
+                    unreadStr = nil
+                }
+                self.messagesController!.tabBarItem.badgeValue = unreadStr
+            }, failure: {
+                (code, message) -> Void in
+            })
+        } else {
+            self.myController!.tabBarItem.badgeValue = nil
+        }
     }
 
     override func didReceiveMemoryWarning() {
