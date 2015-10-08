@@ -81,7 +81,7 @@ class MyController: BaseGroupedListController {
                 title = "我的动弹"
                 identifier = CELL_MY_PROFILE
                 let cell = MyProfileCell()
-                cell.bind(User.current()!)
+                cell.bind(User.current())
                 cell.restorationIdentifier = identifier
                 return cell
             case 1:
