@@ -63,6 +63,10 @@ class TopicDetailController: BaseListController<Reply> {
         ApiClient.topicDetail(topicId!, success: success, failure: failure)
     }
     
+    override func ignoreCount() -> Int {
+        return 1
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if (indexPath.row == 0) {
             if (topicContentCell == nil) {
