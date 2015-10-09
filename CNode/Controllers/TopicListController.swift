@@ -72,7 +72,7 @@ class TopicListController: BaseListController<Topic>, XLPagerTabStripChildItem {
         let success = {
             (data: [Topic]) -> Void in
             // 下拉刷新时清空数据源
-            if (page == 0) {
+            if (page == ApiClient.PAGE_FIRST) {
                 self.dataSource = []
             }
             self.dataSource += data
@@ -118,8 +118,8 @@ class TopicListController: BaseListController<Topic>, XLPagerTabStripChildItem {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell: UITableViewCell? = tableView.cellForRowAtIndexPath(indexPath)
         cell?.selected = false
-
-        let controller: TopicDetailController = TopicDetailController()
+        let topic: Topic = self.dataSource[indexPath.row]
+        let controller: TopicDetailController = TopicDetailController(data: topic)
         controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)
     }

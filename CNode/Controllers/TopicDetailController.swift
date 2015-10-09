@@ -16,7 +16,15 @@
 
 class TopicDetailController: BaseListController<Reply> {
     
-    var topicId = "5433d5e4e737cbe96dcef312"
+    init(data: Topic) {
+        super.init()
+        self.topic = data
+        self.topicId = self.topic?.id
+    }
+
+    var topicId: String?
+    var topic: Topic?
+    var topicContentCell: TopicContentCell?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +46,9 @@ class TopicDetailController: BaseListController<Reply> {
         let success = {
             (data: Topic) -> Void in
             // 下拉刷新时清空数据源
-            if (page == 0) {
+            if (page == ApiClient.PAGE_FIRST) {
                 self.dataSource = []
+                self.dataSource.append(Reply())
             }
             self.dataSource += data.replies!
             // 停止刷新中...
@@ -51,10 +60,17 @@ class TopicDetailController: BaseListController<Reply> {
             self.endRefreshing()
         };
         // 获取话题详情
-        ApiClient.topicDetail(topicId, success: success, failure: failure)
+        ApiClient.topicDetail(topicId!, success: success, failure: failure)
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if (indexPath.row == 0) {
+            if (topicContentCell == nil) {
+                topicContentCell = TopicContentCell()
+            }
+            topicContentCell!.bind(topic!)
+            return topicContentCell!
+        }
         let cell: ReplyCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! ReplyCell
         let reply: Reply = self.dataSource[indexPath.row]
         cell.bind(reply)
@@ -65,8 +81,5 @@ class TopicDetailController: BaseListController<Reply> {
         let cell: UITableViewCell? = tableView.cellForRowAtIndexPath(indexPath)
         cell?.selected = false
         
-        let controller: TopicDetailController = TopicDetailController()
-        controller.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(controller, animated: true)
     }
 }

@@ -15,14 +15,33 @@
  */
 
 class PublishTopicController: BaseGroupedListController {
+    
+    var content: UITextField = UITextField()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "TITLE_PUBLISH_TOPIC".localized
+        
+        
+        let btnDone: UIBarButtonItem = UIBarButtonItem(title: "ACTION_DONE".localized, style: .Plain, target: self, action: "done:")
+        self.navigationItem.rightBarButtonItem = btnDone
+        
+        self.view.addSubview(self.content)
+        self.content.placeholder = "输入内容"
+        self.content.snp_makeConstraints { (make) -> Void in
+            make.width.equalTo(self.view)
+            make.height.equalTo(300)
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func done(sender: UIBarButtonItem) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
 }

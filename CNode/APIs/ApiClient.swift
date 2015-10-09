@@ -20,6 +20,7 @@ import ObjectMapper
 import Ono
 
 class ApiClient {
+    static let PAGE_FIRST: Int = 0
     static let PAGE_SIZE: Int = 20
     
     static func isSuccess(result: Result<AnyObject>, failure: (code: Int, message: String) -> Void) -> Bool {

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A0B55325D204165408A949B /* Pods_CNode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E26ECA319FBE05E71505B1C /* Pods_CNode.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		87A9E00E14B74AA344BC1B8C /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9EECAA9F4EAC546DFE493 /* BaseNavigationController.swift */; };
 		87A9E0D6552AADCE4139F2F4 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9ECD875353F32AB575E65 /* AboutController.swift */; };
 		87A9E2014F0D51F8105EA916 /* MyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9E7EC6DDFC2A612220705 /* MyController.swift */; };
@@ -37,7 +36,7 @@
 		87A9EEA5BE0DDE364CC53001 /* TopicListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9ED54295B6F0B7A9A4F36 /* TopicListController.swift */; };
 		87A9EF744B9AEF9AE24A5CA0 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9EFAFFFC474EFFF791A0F /* MyProfileView.swift */; };
 		87A9EFE5790B5834D4D7ECE6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9EEA5226E7F1704C5FD18 /* StringExtension.swift */; };
-		A1F68551BEC4F5B3768B6DFF /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31429D854B658A17594A3CBC /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F51F658D1BC8069D00ED7E04 /* TopicContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F658C1BC8069D00ED7E04 /* TopicContentCell.swift */; settings = {ASSET_TAGS = (); }; };
 		F538B69B1BBFED4700B74214 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F538B69D1BBFED4700B74214 /* Localizable.strings */; };
 		F55CD18F1BBFD9760025DE02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55CD18E1BBFD9760025DE02 /* AppDelegate.swift */; };
 		F55CD1961BBFD9760025DE02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55CD1951BBFD9760025DE02 /* Assets.xcassets */; };
@@ -49,6 +48,7 @@
 		F5D679331BC53E5E00CCA2BC /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D679321BC53E5E00CCA2BC /* Message.swift */; settings = {ASSET_TAGS = (); }; };
 		F5D679351BC5484900CCA2BC /* MessagesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D679341BC5484900CCA2BC /* MessagesResult.swift */; settings = {ASSET_TAGS = (); }; };
 		F5E01D131BC0D7340090242C /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E01D121BC0D7340090242C /* TopicCell.swift */; settings = {ASSET_TAGS = (); }; };
+		F9426B57DFD34850F5E28153 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31429D854B658A17594A3CBC /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +86,7 @@
 		87A9EFAFFFC474EFFF791A0F /* MyProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		87A9EFFDA2308583F43BA32A /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		F4D8D2DB365CADA00E116915 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		F51F658C1BC8069D00ED7E04 /* TopicContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicContentCell.swift; sourceTree = "<group>"; };
 		F538B69C1BBFED4700B74214 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F538B69E1BBFED5E00B74214 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		F55CD18B1BBFD9760025DE02 /* CNode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CNode.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,8 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1F68551BEC4F5B3768B6DFF /* Pods.framework in Frameworks */,
-				3A0B55325D204165408A949B /* Pods_CNode.framework in Frameworks */,
+				F9426B57DFD34850F5E28153 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +205,7 @@
 				F5E01D121BC0D7340090242C /* TopicCell.swift */,
 				F5D679301BC53ACB00CCA2BC /* ReplyCell.swift */,
 				87A9E915FA267BBA2C0F2C6F /* MessageCell.swift */,
+				F51F658C1BC8069D00ED7E04 /* TopicContentCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -357,7 +358,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CNode/Pods-CNode-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7F1ADBCA58F24F05E3AD29E4 /* Embed Pods Frameworks */ = {
@@ -372,7 +373,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CNode/Pods-CNode-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD4DBE908496CC3B5B5B6DE6 /* Check Pods Manifest.lock */ = {
@@ -401,6 +402,7 @@
 				F55CD18F1BBFD9760025DE02 /* AppDelegate.swift in Sources */,
 				F5D679351BC5484900CCA2BC /* MessagesResult.swift in Sources */,
 				F5E01D131BC0D7340090242C /* TopicCell.swift in Sources */,
+				F51F658D1BC8069D00ED7E04 /* TopicContentCell.swift in Sources */,
 				F5D679331BC53E5E00CCA2BC /* Message.swift in Sources */,
 				87A9EC304040E0CD708E7B77 /* URLs.swift in Sources */,
 				87A9E3CC20CF840F7AD25AFD /* ApiClient.swift in Sources */,

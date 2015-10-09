@@ -70,9 +70,9 @@ class MessagesController: BaseListController<Message> {
         let cell: UITableViewCell? = tableView.cellForRowAtIndexPath(indexPath)
         cell?.selected = false
 
-        let controller: TopicDetailController = TopicDetailController()
-        controller.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(controller, animated: true)
+//        let controller: TopicDetailController = TopicDetailController()
+//        controller.hidesBottomBarWhenPushed = true
+//        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func markAllAsRead(sender: UIBarButtonItem) {

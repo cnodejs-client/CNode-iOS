@@ -47,7 +47,7 @@ class BaseListController<T>: UITableViewController {
                 self.btnEmpty.hidden = true
                 self.btnError.hidden = true
             }
-            self.loadData(0)
+            self.loadData(ApiClient.PAGE_FIRST)
         }
         header.lastUpdatedTimeLabel!.hidden = true
         // 上拉加载
@@ -96,7 +96,7 @@ class BaseListController<T>: UITableViewController {
         self.btnError.hidden = true
         // 延时0.3秒后执行加载数据操作，延时是为了Loading不会因为加载速度过快造成一闪而过的不好体验
         self.delay(0.3) { () -> () in
-            self.loadData(0)
+            self.loadData(ApiClient.PAGE_FIRST)
         }
     }
 
@@ -138,9 +138,15 @@ class BaseListController<T>: UITableViewController {
 
     // MAKE: 当前页码（按照TableView的数量计算）
     func page() -> Int {
-        let count = self.tableView(self.tableView, numberOfRowsInSection: 0)
+        var count = self.tableView(self.tableView, numberOfRowsInSection: 0)
+        count -= self.ignoreCount()
         if (count > 0) {
-            return count / pageSize()
+            let page = count / pageSize()
+            // 如果默认page是从1开始的，则page+1
+            if (ApiClient.PAGE_FIRST == 1) {
+                return page + 1
+            }
+            return page
         }
         return 0
     }
@@ -152,9 +158,16 @@ class BaseListController<T>: UITableViewController {
     
     // MAKE: 数据是否已经加载完毕
     func hasMore() -> Bool {
-        if (self.dataSource.count % self.pageSize() != 0 || (self.page() > 0 && self.dataSource.count == 0)) {
+        var count = self.dataSource.count
+        count -= self.ignoreCount()
+        if (count % self.pageSize() != 0 || (self.page() > 0 && count == 0)) {
             return false
         }
         return true
+    }
+    
+    // MAKE: 忽略数（如果在头部插入了其他Cell，但又要保持分布正确，则添加相应的忽略数）
+    func ignoreCount() -> Int {
+        return 0
     }
 }
