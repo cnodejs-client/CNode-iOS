@@ -113,15 +113,13 @@ class LoginController: BaseGroupedListController {
         ApiClient.login(username, password: password,
             success: {
                 (data: User) -> Void in
-                let hud = HUD.show((self.parentViewController?.view)!, message: "欢迎" + data.loginname!)
-                hud.completionBlock = {
+                HUD.showSuccess("欢迎" + data.loginname!)
                     self.dismissViewControllerAnimated(true, completion: nil)
                     self.navigationController?.popToRootViewControllerAnimated(true)
-                }
             },
             failure: {
                 (code: Int, message: String) -> Void in
-                HUD.show(self.view, message: message)
+                HUD.showError(message)
             }
         )
     }

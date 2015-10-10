@@ -78,9 +78,10 @@ class MessagesController: BaseListController<Message> {
     func markAllAsRead(sender: UIBarButtonItem) {
         ApiClient.markAllAsRead({
             (data) -> Void in
-            HUD.show(self.view, message: "全部消息标记为已读！")
+            HUD.showSuccess("全部消息标记为已读！")
         }, failure: {
             (code, message) -> Void in
+            HUD.showError(message)
         })
     }
 }

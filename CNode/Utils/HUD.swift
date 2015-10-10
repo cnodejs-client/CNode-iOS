@@ -14,16 +14,27 @@
  * limitations under the License.
  */
 
-import MBProgressHUD
+import SVProgressHUD
 
 class HUD {
 
-    static func show(view: UIView, message: String) -> MBProgressHUD {
-        let hud: MBProgressHUD = MBProgressHUD.showHUDAddedTo(view, animated: true)
-        hud.mode = MBProgressHUDMode.Text
-        hud.labelText = message
-        hud.show(true)
-        hud.hide(true, afterDelay: 1.5)
-        return hud
+    // MAKE: 显示处理中HUD消息
+    static func showProgress(string: String) {
+        SVProgressHUD.showProgress(0, status: string)
+    }
+
+    // MAKE: 显示成功HUD消息
+    static func showSuccess(string: String) {
+        SVProgressHUD.showSuccessWithStatus(string)
+    }
+    
+    // MAKE: 显示失败HUD消息
+    static func showError(string: String) {
+        SVProgressHUD.showErrorWithStatus(string)
+    }
+    
+    // MAKE: 显示信息HUD消息
+    static func showInfo(string: String) {
+        SVProgressHUD.showInfoWithStatus(string)
     }
 }

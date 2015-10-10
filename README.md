@@ -10,7 +10,7 @@ CNode-iOS 是采用 Swift 开发的cnodejs.org社区客户端
 > 微信：[lijy91]()
 
 #编译环境
-XCode 7+
+Xcode 7
 iOS 8+
 Swift 2.0
 

@@ -36,6 +36,7 @@
 		87A9EEA5BE0DDE364CC53001 /* TopicListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9ED54295B6F0B7A9A4F36 /* TopicListController.swift */; };
 		87A9EF744B9AEF9AE24A5CA0 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9EFAFFFC474EFFF791A0F /* MyProfileView.swift */; };
 		87A9EFE5790B5834D4D7ECE6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9EEA5226E7F1704C5FD18 /* StringExtension.swift */; };
+		E94231DDA0F03033C30A0D29 /* Pods_CNode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E26ECA319FBE05E71505B1C /* Pods_CNode.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F51F658D1BC8069D00ED7E04 /* TopicContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F658C1BC8069D00ED7E04 /* TopicContentCell.swift */; settings = {ASSET_TAGS = (); }; };
 		F538B69B1BBFED4700B74214 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F538B69D1BBFED4700B74214 /* Localizable.strings */; };
 		F55CD18F1BBFD9760025DE02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55CD18E1BBFD9760025DE02 /* AppDelegate.swift */; };
@@ -52,8 +53,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		30F34F067B4FE5FA48B4652D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		31429D854B658A17594A3CBC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CC88CB4F493EE8F338FAC45 /* Pods-CNode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CNode.release.xcconfig"; path = "Pods/Target Support Files/Pods-CNode/Pods-CNode.release.xcconfig"; sourceTree = "<group>"; };
 		6E26ECA319FBE05E71505B1C /* Pods_CNode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CNode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87A9E078787C076CFBFC480B /* TopicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicController.swift; sourceTree = "<group>"; };
 		87A9E0B3A98D09104534E4F1 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -85,7 +86,7 @@
 		87A9EF2B532E7C0E57BF8D2C /* ButtonBarViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonBarViewCell.xib; sourceTree = "<group>"; };
 		87A9EFAFFFC474EFFF791A0F /* MyProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		87A9EFFDA2308583F43BA32A /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
-		F4D8D2DB365CADA00E116915 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		8D3D63AA61D807BF5993D1AC /* Pods-CNode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CNode.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CNode/Pods-CNode.debug.xcconfig"; sourceTree = "<group>"; };
 		F51F658C1BC8069D00ED7E04 /* TopicContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicContentCell.swift; sourceTree = "<group>"; };
 		F538B69C1BBFED4700B74214 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F538B69E1BBFED5E00B74214 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -109,6 +110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9426B57DFD34850F5E28153 /* Pods.framework in Frameworks */,
+				E94231DDA0F03033C30A0D29 /* Pods_CNode.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,8 +232,8 @@
 		F3DC466C40D8E60EA5678614 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				30F34F067B4FE5FA48B4652D /* Pods.debug.xcconfig */,
-				F4D8D2DB365CADA00E116915 /* Pods.release.xcconfig */,
+				8D3D63AA61D807BF5993D1AC /* Pods-CNode.debug.xcconfig */,
+				3CC88CB4F493EE8F338FAC45 /* Pods-CNode.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -358,7 +360,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CNode/Pods-CNode-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7F1ADBCA58F24F05E3AD29E4 /* Embed Pods Frameworks */ = {
@@ -373,7 +375,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CNode/Pods-CNode-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD4DBE908496CC3B5B5B6DE6 /* Check Pods Manifest.lock */ = {
@@ -544,7 +546,7 @@
 		};
 		F55CD19E1BBFD9760025DE02 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30F34F067B4FE5FA48B4652D /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 8D3D63AA61D807BF5993D1AC /* Pods-CNode.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -560,7 +562,7 @@
 		};
 		F55CD19F1BBFD9760025DE02 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4D8D2DB365CADA00E116915 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 3CC88CB4F493EE8F338FAC45 /* Pods-CNode.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
