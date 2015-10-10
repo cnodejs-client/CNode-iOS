@@ -19,60 +19,55 @@ import SnapKit
 
 class ReplyCell: UITableViewCell {
     
-    var titleLabel: UILabel = UILabel()
-    var bodyLabel: UILabel = UILabel()
     var avatar: UIImageView = UIImageView()
-    var author: UILabel = UILabel()
+    var name: UILabel = UILabel()
     var create_at: UILabel = UILabel()
+    var content: UILabel = UILabel()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.contentView.addSubview(self.titleLabel)
-        self.contentView.addSubview(self.bodyLabel)
         self.contentView.addSubview(self.avatar)
-        self.contentView.addSubview(self.author)
+        self.contentView.addSubview(self.name)
         self.contentView.addSubview(self.create_at)
-        
-        // 标题
-        self.titleLabel.numberOfLines = 0
-        self.titleLabel.font = UIFont.boldSystemFontOfSize(16)
-        // 头像
+        self.contentView.addSubview(self.content)
+        // 回复人头像
         self.avatar.backgroundColor = UIColor.blueColor()
         self.avatar.multipleTouchEnabled = true
         self.avatar.userInteractionEnabled = true
-        // 作者
-        self.author.textColor = UIColor.grayColor()
-        self.author.font = UIFont.systemFontOfSize(14)
-        // 日期
+        // 回复人名称
+        self.name.textColor = UIColor.grayColor()
+        self.name.font = UIFont.systemFontOfSize(14)
+        // 回复时间
         self.create_at.textColor = UIColor.grayColor()
         self.create_at.font = UIFont.systemFontOfSize(14)
+        // 内容
+        self.content.numberOfLines = 0
+        self.content.textColor = UIColor.grayColor()
+        self.content.font = UIFont.systemFontOfSize(14)
         
         // top -> left -> bottom -> right
-        let padding: UIEdgeInsets = UIEdgeInsetsMake(8, 16, 8, 8)
+        let padding: UIEdgeInsets = UIEdgeInsetsMake(8, 8, 8, 8)
         
         self.avatar.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(padding.top)
-            make.right.equalTo(-padding.right)
-            make.width.equalTo(30)
-            make.height.equalTo(30)
+            make.left.equalTo(padding.left)
+            make.width.equalTo(20)
+            make.height.equalTo(20)
         }
-        self.titleLabel.snp_makeConstraints { (make) -> Void in
+        
+        self.name.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(padding.top)
-            make.left.equalTo(padding.left)
-            make.right.equalTo(self.avatar.snp_left).inset(-8)
+            make.left.equalTo(self.avatar.snp_right).inset(-5)
         }
-        self.author.snp_makeConstraints { (make) -> Void in
-            make.top.equalTo(self.titleLabel.snp_bottom).inset(-5)
-            make.left.equalTo(padding.left)
-        }
-        self.create_at.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(self.author.snp_right).inset(-5)
-            make.centerY.equalTo(self.author)
+        self.content.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(self.name.snp_bottom).inset(-5)
+            make.left.equalTo(self.name.snp_left)
+            make.right.equalTo(-padding.right)
         }
         self.contentView.snp_makeConstraints { (make) -> Void in
             make.edges.equalTo(self)
-            make.bottom.equalTo(self.author.snp_bottom).inset(-padding.bottom)
+            make.bottom.equalTo(self.content.snp_bottom).inset(-padding.bottom)
         }
     }
     
@@ -81,10 +76,10 @@ class ReplyCell: UITableViewCell {
     }
     
     func bind(data: Reply) -> CGFloat {
-        self.titleLabel.text = data.content
-        self.author.text = data.author?.loginname
-        self.create_at.text = data.create_at
         self.avatar.sd_setImageWithURL(NSURL(string: data.author!.avatar_url!))
+        self.name.text = data.author?.loginname
+        self.create_at.text = data.create_at
+        self.content.text = data.content
         self.setNeedsLayout()
         return 0
     }
