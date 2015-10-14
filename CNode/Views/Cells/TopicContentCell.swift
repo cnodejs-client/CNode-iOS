@@ -42,8 +42,9 @@ class TopicContentCell: UITableViewCell, UIWebViewDelegate {
         self.titleLabel.font = UIFont.boldSystemFontOfSize(16)
         // 内容
         self.content.delegate = self
+        self.content.opaque = false
         self.content.scrollView.scrollEnabled = false
-        self.content.backgroundColor = UIColor.blueColor()
+//        self.content.backgroundColor = UIColor.blueColor()
         // 头像
         self.avatar.backgroundColor = UIColor.blueColor()
         self.avatar.multipleTouchEnabled = true
@@ -116,7 +117,6 @@ class TopicContentCell: UITableViewCell, UIWebViewDelegate {
         self.content.snp_updateConstraints { (make) -> Void in
             make.height.equalTo(height)
         }
-//        self.setNeedsLayout()
         // 重新reload第一个Cell
         self.tableView?.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
     }
