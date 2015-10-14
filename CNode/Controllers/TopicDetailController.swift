@@ -72,7 +72,7 @@ class TopicDetailController: BaseListController<Reply> {
             if (topicContentCell == nil) {
                 topicContentCell = TopicContentCell()
             }
-            topicContentCell!.bind(topic!)
+            topicContentCell!.bind(tableView, data:topic!)
             return topicContentCell!
         }
         let cell: ReplyCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! ReplyCell

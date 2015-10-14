@@ -17,10 +17,13 @@
 import UIKit
 import SnapKit
 
-class TopicContentCell: UITableViewCell {
+class TopicContentCell: UITableViewCell, UIWebViewDelegate {
+    
+    var tableView: UITableView?
     
     var titleLabel: UILabel = UILabel()
-    var content: UILabel = UILabel()
+    var content: UIWebView = UIWebView()
+    var webViewHeight = CGFloat.min
     var avatar: UIImageView = UIImageView()
     var author: UILabel = UILabel()
     var create_at: UILabel = UILabel()
@@ -38,8 +41,9 @@ class TopicContentCell: UITableViewCell {
         self.titleLabel.numberOfLines = 0
         self.titleLabel.font = UIFont.boldSystemFontOfSize(16)
         // 内容
-        self.content.numberOfLines = 0
-        self.content.font = UIFont.systemFontOfSize(16)
+        self.content.delegate = self
+        self.content.scrollView.scrollEnabled = false
+        self.content.backgroundColor = UIColor.blueColor()
         // 头像
         self.avatar.backgroundColor = UIColor.blueColor()
         self.avatar.multipleTouchEnabled = true
@@ -69,6 +73,7 @@ class TopicContentCell: UITableViewCell {
             make.top.equalTo(self.titleLabel.snp_bottom)
             make.left.equalTo(padding.left)
             make.right.equalTo(self.avatar.snp_left).inset(-8)
+            make.height.equalTo(50)
         }
         self.author.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(self.content.snp_bottom).inset(-5)
@@ -88,14 +93,42 @@ class TopicContentCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bind(data: Topic) -> CGFloat {
+    func bind(tableView: UITableView, data: Topic) -> CGFloat {
+        self.tableView = tableView
+        self.content.loadHTMLString(html(data.content!), baseURL: NSURL(string: URLs.baseURL))
+        
         self.titleLabel.text = data.title
-        self.content.text = data.content
         self.author.text = data.author?.loginname
         self.create_at.text = data.create_at
         self.avatar.sd_setImageWithURL(NSURL(string: data.author!.avatar_url!))
+        
         self.setNeedsLayout()
         return 0
     }
     
+    func webViewDidFinishLoad(webView: UIWebView) {
+        let height = webView.scrollView.contentSize.height
+        print("\(height) \(webViewHeight)")
+        if height == webViewHeight {
+            return
+        }
+        webViewHeight = height
+        self.content.snp_updateConstraints { (make) -> Void in
+            make.height.equalTo(height)
+        }
+//        self.setNeedsLayout()
+        // 重新reload第一个Cell
+        self.tableView?.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
+    }
+    
+    func html(body: String) -> String {
+        return "<!DOCTYPE html>" +
+        "<html>" +
+        "<head>" +
+        "</head>" +
+            "<body>" +
+                body +
+            "</body>" +
+        "</html>"
+    }
 }

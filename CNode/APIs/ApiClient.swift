@@ -98,22 +98,23 @@ class ApiClient {
         _csrf(_csrf_success, failure: failure)
     }
     
-    // 获取Token
+    // 获取自己的资料
     static func myProfile(success: (data: User) -> Void, failure: (code: Int, message: String) -> Void) {
         Alamofire.request(.GET, URLs.SETTING)
             .responseString {
                 (request, response, result) -> Void in
                 
                 let html = result.value!
-//                print(html)
+                // 头像
+                let _avatarElement = self.body(html, begin: "<a class='user_avatar'", end: "</a>")
                 // 用户信息
                 let _profileElement = self.body(html, begin: "<form id='setting_form' class='form-horizontal' action='/setting' method='post'>", end:"</form>")
-//                print(_profileElement)
+                print(_avatarElement)
                 // Token
                 let _tokenElement = self.body(html, begin: "<div id='content'>", end: "</div>")
-//                print(_tokenElement)
                 let _tokenStr = _tokenElement.rootElement.children[2][1][0]
                 let user: User = User()
+                user.avatar_url = _avatarElement.rootElement.children[0].attributes["src"] as? String
                 user.loginname = _profileElement.rootElement.children[0][1][0].attributes["value"] as? String
                 user.email = _profileElement.rootElement.children[1][1][0].attributes["value"] as? String
                 user.homepage = _profileElement.rootElement.children[2][1][0].attributes["value"] as? String
@@ -184,7 +185,7 @@ class ApiClient {
                 }
                 
                 var unreadCount = result.value!["data"] as! Int
-                unreadCount += 18
+//                unreadCount += 18
                 success(data: unreadCount)
         }
     }

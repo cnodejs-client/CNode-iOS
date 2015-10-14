@@ -70,7 +70,7 @@ class MyProfileCell: UITableViewCell {
             self.avatar.sd_setImageWithURL(nil)
         } else {
             self.name.text = data!.loginname
-//            self.avatar.sd_setImageWithURL(NSURL(string: (data!.avatar_url)!))
+            self.avatar.sd_setImageWithURL(NSURL(string: (data!.avatar_url)!))
         }
     }
 }

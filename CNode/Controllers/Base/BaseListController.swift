@@ -49,11 +49,16 @@ class BaseListController<T>: UITableViewController {
             }
             self.loadData(ApiClient.PAGE_FIRST)
         }
+        // 隐藏时间
         header.lastUpdatedTimeLabel!.hidden = true
+        // 隐藏状态
+        header.stateLabel!.hidden = true
         // 上拉加载
         let footer = MJRefreshAutoNormalFooter { () -> Void in
             self.loadData(self.page())
         }
+        footer.refreshingTitleHidden = true
+        
         self.tableView.header = header
         self.tableView.footer = footer
         // 不显示多余的分割线

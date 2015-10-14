@@ -113,9 +113,10 @@ class LoginController: BaseGroupedListController {
         ApiClient.login(username, password: password,
             success: {
                 (data: User) -> Void in
+                print(data)
                 HUD.showSuccess("欢迎" + data.loginname!)
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                    self.navigationController?.popToRootViewControllerAnimated(true)
+                self.dismissViewControllerAnimated(true, completion: nil)
+                self.navigationController?.popToRootViewControllerAnimated(true)
             },
             failure: {
                 (code: Int, message: String) -> Void in
