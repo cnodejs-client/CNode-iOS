@@ -20,7 +20,6 @@
 #import "Ono/Ono.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "OnePasswordExtension/OnePasswordExtension.h"
-#import "UITableView_FDTemplateLayoutCell/UITableView+FDTemplateLayoutCell.h"
 #import "UIAlertController_Blocks/UIAlertController+Blocks.h"
 #import "UIActionSheet_Blocks/UIActionSheet+Blocks.h"
 #import "UIBarButtonItem_Badge/UIBarButtonItem+Badge.h"

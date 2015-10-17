@@ -16,7 +16,6 @@
 
 import UIKit
 import MJRefresh
-import XLPagerTabStrip
 
 // MAKE:
 class BaseListController<T>: UITableViewController {
@@ -24,8 +23,6 @@ class BaseListController<T>: UITableViewController {
     init() {
         super.init(style: .Plain)
     }
-    
-    var tabStripViewController: XLButtonBarPagerTabStripViewController? = nil
 
     var loadingView: UIActivityIndicatorView = UIActivityIndicatorView()
     var emptyView: UIButton = UIButton()
@@ -65,7 +62,7 @@ class BaseListController<T>: UITableViewController {
         // 不显示多余的分割线
         self.tableView.tableFooterView = UIView()
         
-        var btnFrame: CGRect = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: self.tableView.frame.height - self.tableView.contentInset.bottom)
+        var btnFrame: CGRect = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: self.tableView.frame.height)
         self.loadingView.frame = btnFrame
         self.loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
         
@@ -84,6 +81,8 @@ class BaseListController<T>: UITableViewController {
         self.loadingView.hidden = true
         self.emptyView.hidden = true
         self.errorView.hidden = true
+        
+        self.tableView.separatorColor = Theme.color.separatorColor()
     }
     
     // MAKE: TableView数量默认为dataSource.count

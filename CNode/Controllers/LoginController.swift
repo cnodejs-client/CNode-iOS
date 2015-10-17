@@ -56,7 +56,7 @@ class LoginController: BaseGroupedListController {
             make.centerX.equalTo(self.tbcTitle.contentView)
         }
         // 用户名
-        self.tfUsername.placeholder = "电子邮箱或用户名"
+        self.tfUsername.placeholder = "电子邮箱"
         self.tfUsername.font = Theme.font.input()
         self.tfUsername.textColor = Theme.color.title()
         self.tfUsername.frame = self.tbcUsername.frame
@@ -80,6 +80,18 @@ class LoginController: BaseGroupedListController {
             make.top.equalTo(0)
             make.height.equalTo(1)
             make.centerX.equalTo(self.tfUsername)
+        }
+        // 添加onepassword按钮
+        if (OnePasswordExtension.sharedExtension().isAppExtensionAvailable()) {
+            self.btnOnepassword.setBackgroundImage(UIImage(named: "onepassword-button"), forState: UIControlState.Normal)
+            self.btnOnepassword.addTarget(self, action: Selector("onepassword:"), forControlEvents: .TouchUpInside)
+            self.tbcUsername.contentView.addSubview(self.btnOnepassword)
+            self.btnOnepassword.snp_makeConstraints { (make) -> Void in
+                make.height.equalTo(22)
+                make.width.equalTo(22)
+                make.right.equalTo(self.tfUsername)
+                make.centerY.equalTo(self.tfUsername)
+            }
         }
         // 密码
         self.tfPassword.placeholder = "密码"
@@ -146,6 +158,7 @@ class LoginController: BaseGroupedListController {
         }
      
         // 添加View事件处理
+        self.tfUsername.addTarget(self, action: "usernameFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
         self.btnLogin.addTarget(self, action: "login:", forControlEvents: .TouchUpInside)
         self.btnForgotPassword.addTarget(self, action: "forgotPassword:", forControlEvents: .TouchUpInside)
     }
@@ -178,49 +191,6 @@ class LoginController: BaseGroupedListController {
         default:
             return UITableViewCell(style: .Default, reuseIdentifier: "Cell")
         }
-//        switch (indexPath.section) {
-//        case 0:
-//            switch (indexPath.row) {
-//            case 0:
-//                let cell = TextFieldCell(reuseIdentifier: CELL_USERNAME)
-//                cell.textField.placeholder = "用户名"
-//                tfUsername = cell.textField
-//                tfUsername.returnKeyType = .Next
-//                tfUsername.addTarget(self, action: "usernameFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
-//                
-//                // 添加onepassword按钮
-//                if (OnePasswordExtension.sharedExtension().isAppExtensionAvailable()) {
-//                    self.btnOnepassword.setBackgroundImage(UIImage(named: "onepassword-button"), forState: UIControlState.Normal)
-//                    self.btnOnepassword.addTarget(self, action: Selector("onepassword:"), forControlEvents: .TouchUpInside)
-//                    cell.textField.addSubview(btnOnepassword)
-//                    self.btnOnepassword.snp_makeConstraints {
-//                        (make) -> Void in
-//                        make.right.equalTo(cell.textField)
-//                        make.centerY.equalTo(cell.textField)
-//                    }
-//                }
-//                return cell
-//            case 1:
-//                let cell = TextFieldCell(reuseIdentifier: CELL_PASSWORD)
-//                
-//                cell.textField.placeholder = "密码"
-//                cell.textField.secureTextEntry = true
-//                tfPassword = cell.textField
-//                tfPassword.returnKeyType = .Send
-//                return cell
-//            default:
-//                break
-//            }
-//            break
-//        case 1:
-//            let cell = UITableViewCell(style: .Default, reuseIdentifier: CELL_LOGIN)
-//            cell.textLabel?.text = "登录"
-//            cell.textLabel?.textAlignment = .Center
-//            cell.textLabel?.textColor = UIColor.redColor()
-//            return cell
-//        default:
-//            break
-//        }
     }
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -243,7 +213,7 @@ class LoginController: BaseGroupedListController {
         let password: String = tfPassword.text!
         
         if (username.characters.count == 0) {
-            HUD.showError("请输入电子邮箱或用户名")
+            HUD.showError("请输入电子邮箱")
             return
         }
         if (password.characters.count == 0) {

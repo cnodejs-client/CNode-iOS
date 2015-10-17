@@ -19,6 +19,7 @@ struct URLs {
     static let apiVersion: String = "/api/v1"
     // user
     static let LOGIN: String = baseURL + "/signin"
+    static let LOGIN_WITH_GITHUB: String = baseURL + "/auth/github"
     static let FORGOT_PASSWORD: String = baseURL + "/search_pass"
     static let SETTING: String = baseURL + "/setting"
     static let PROFILE: String = baseURL + apiVersion + "/user/"
