@@ -15,13 +15,16 @@
  */
 
 import UIKit
+import SVProgressHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject:AnyObject]?) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        // 初始化SVProgressHUD
+        SVProgressHUD.setDefaultMaskType(.Black)
         // 显示主界面
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window!.rootViewController = HomeController()

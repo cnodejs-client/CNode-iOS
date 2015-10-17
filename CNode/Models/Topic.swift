@@ -29,7 +29,7 @@ class Topic: Mappable {
     var visit_count: Int = 0    // 阅读数
     var create_at: String?      // 发表时间
     var author: User?           // 作者
-    var replies: [Reply]?         // 评论列表
+    var replies: [Reply]?       // 评论列表
 
     init() { }
 

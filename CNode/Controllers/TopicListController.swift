@@ -25,7 +25,7 @@ enum TopicListFlag {
     case Job    // 招聘
 }
 
-class TopicListController: BaseListController<Topic>, XLPagerTabStripChildItem {
+class TopicListController: BaseListController<Topic> {
 
     var flag: TopicListFlag = TopicListFlag.All
 
@@ -51,21 +51,6 @@ class TopicListController: BaseListController<Topic>, XLPagerTabStripChildItem {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    func titleForPagerTabStripViewController(pagerTabStripViewController: XLPagerTabStripViewController!) -> String! {
-        switch (flag) {
-        case .All:
-            return "TAB_TOPIC_LIST_ALL".localized
-        case .Good:
-            return "TAB_TOPIC_LIST_GOOD".localized
-        case .Share:
-            return "TAB_TOPIC_LIST_SHARE".localized
-        case .Ask:
-            return "TAB_TOPIC_LIST_ASK".localized
-        case .Job:
-            return "TAB_TOPIC_LIST_JOB".localized
-        }
     }
 
     override func loadData(page: Int) {

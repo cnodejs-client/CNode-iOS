@@ -19,8 +19,8 @@ import SVProgressHUD
 class HUD {
 
     // MAKE: 显示处理中HUD消息
-    static func showProgress(string: String) {
-        SVProgressHUD.showProgress(0, status: string)
+    static func showProcessing(string: String) {
+        SVProgressHUD.showWithStatus(string)
     }
 
     // MAKE: 显示成功HUD消息

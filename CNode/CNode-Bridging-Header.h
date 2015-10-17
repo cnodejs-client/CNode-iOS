@@ -17,7 +17,6 @@
 // Use this file to import your target's public headers that you would like to expose to Swift.
 #import "SVProgressHUD/SVProgressHUD.h"
 #import "MJRefresh/MJRefresh.h"
-#import "XLPagerTabStrip/XLBarPagerTabStripViewController.h"
 #import "Ono/Ono.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "OnePasswordExtension/OnePasswordExtension.h"
@@ -26,3 +25,4 @@
 #import "UIActionSheet_Blocks/UIActionSheet+Blocks.h"
 #import "UIBarButtonItem_Badge/UIBarButtonItem+Badge.h"
 #import "ZBarSDK/ZBarSDK.h"
+#import "NJKWebViewProgress/NJKWebViewProgress.h"

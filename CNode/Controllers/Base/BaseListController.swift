@@ -27,9 +27,9 @@ class BaseListController<T>: UITableViewController {
     
     var tabStripViewController: XLButtonBarPagerTabStripViewController? = nil
 
-    var btnLoading: UIButton = UIButton()
-    var btnEmpty: UIButton = UIButton()
-    var btnError: UIButton = UIButton()
+    var loadingView: UIActivityIndicatorView = UIActivityIndicatorView()
+    var emptyView: UIButton = UIButton()
+    var errorView: UIButton = UIButton()
 
     var dataSource: [T] = []
 
@@ -39,13 +39,14 @@ class BaseListController<T>: UITableViewController {
         let header = MJRefreshNormalHeader { () -> Void in
             self.tableView.footer.resetNoMoreData()
             if (self.dataSource.count == 0) {
-                self.btnLoading.hidden = false
-                self.btnEmpty.hidden = true
-                self.btnError.hidden = true
+                self.loadingView.hidden = false
+                self.emptyView.hidden = true
+                self.errorView.hidden = true
+                self.loadingView.startAnimating()
             } else {
-                self.btnLoading.hidden = true
-                self.btnEmpty.hidden = true
-                self.btnError.hidden = true
+                self.loadingView.hidden = true
+                self.emptyView.hidden = true
+                self.errorView.hidden = true
             }
             self.loadData(ApiClient.PAGE_FIRST)
         }
@@ -58,35 +59,31 @@ class BaseListController<T>: UITableViewController {
             self.loadData(self.page())
         }
         footer.refreshingTitleHidden = true
-        
+        footer.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
         self.tableView.header = header
         self.tableView.footer = footer
         // 不显示多余的分割线
         self.tableView.tableFooterView = UIView()
         
         var btnFrame: CGRect = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: self.tableView.frame.height - self.tableView.contentInset.bottom)
-        self.btnLoading.frame = btnFrame
-//        self.btnLoading.backgroundColor = UIColor.blueColor()
-        self.btnLoading.setTitleColor(UIColor.grayColor(), forState: .Normal)
-        self.btnLoading.setTitle("Loading...", forState: .Normal)
+        self.loadingView.frame = btnFrame
+        self.loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
         
-        self.btnEmpty.frame = btnFrame
-        //        self.btnEmpty.backgroundColor = UIColor.blueColor()
-        self.btnEmpty.setTitleColor(UIColor.grayColor(), forState: .Normal)
-        self.btnEmpty.setTitle("Empty", forState: .Normal)
+        self.emptyView.frame = btnFrame
+        self.emptyView.setTitleColor(UIColor.grayColor(), forState: .Normal)
+        self.emptyView.setTitle("空空如也~", forState: .Normal)
         
-        self.btnError.frame = btnFrame
-        //        self.btnError.backgroundColor = UIColor.blueColor()
-        self.btnError.setTitleColor(UIColor.grayColor(), forState: .Normal)
-        self.btnError.setTitle("Error", forState: .Normal)
+        self.errorView.frame = btnFrame
+        self.errorView.setTitleColor(UIColor.grayColor(), forState: .Normal)
+        self.errorView.setTitle("Error", forState: .Normal)
 
-        self.view.addSubview(self.btnLoading)
-        self.view.addSubview(self.btnEmpty)
-        self.view.addSubview(self.btnError)
+        self.view.addSubview(self.loadingView)
+        self.view.addSubview(self.emptyView)
+        self.view.addSubview(self.errorView)
         
-        self.btnLoading.hidden = true
-        self.btnEmpty.hidden = true
-        self.btnError.hidden = true
+        self.loadingView.hidden = true
+        self.emptyView.hidden = true
+        self.errorView.hidden = true
     }
     
     // MAKE: TableView数量默认为dataSource.count
@@ -96,9 +93,10 @@ class BaseListController<T>: UITableViewController {
 
     // MAKE: 首次进入时刷新数据
     func firstRefreshing() {
-        self.btnLoading.hidden = false
-        self.btnEmpty.hidden = true
-        self.btnError.hidden = true
+        self.loadingView.hidden = false
+        self.loadingView.startAnimating()
+        self.emptyView.hidden = true
+        self.errorView.hidden = true
         // 延时0.3秒后执行加载数据操作，延时是为了Loading不会因为加载速度过快造成一闪而过的不好体验
         self.delay(0.3) { () -> () in
             self.loadData(ApiClient.PAGE_FIRST)
@@ -122,15 +120,17 @@ class BaseListController<T>: UITableViewController {
         if (!self.hasMore()) {
             self.tableView.footer.noticeNoMoreData()
         }
-
+        if self.loadingView.isAnimating() {
+            self.loadingView.stopAnimating()
+        }
         if (self.dataSource.count == 0) {
-            self.btnLoading.hidden = true
-            self.btnEmpty.hidden = false
-            self.btnError.hidden = true
+            self.loadingView.hidden = true
+            self.emptyView.hidden = false
+            self.errorView.hidden = true
         } else {
-            self.btnLoading.hidden = true
-            self.btnEmpty.hidden = true
-            self.btnError.hidden = true
+            self.loadingView.hidden = true
+            self.emptyView.hidden = true
+            self.errorView.hidden = true
         }
     }
     
@@ -165,7 +165,7 @@ class BaseListController<T>: UITableViewController {
     func hasMore() -> Bool {
         var count = self.dataSource.count
         count -= self.ignoreCount()
-        if (count % self.pageSize() != 0 || (self.page() > 0 && count == 0)) {
+        if (count % self.pageSize() != 0 || (count == 0)) {
             return false
         }
         return true

@@ -92,6 +92,7 @@ class ApiClient {
                         myProfile(success, failure: failure)
                         return
                     }
+                    print(result.value)
                     failure(code: -1, message: "用户名或密码错误")
             }
         };
@@ -184,7 +185,7 @@ class ApiClient {
                     return
                 }
                 
-                var unreadCount = result.value!["data"] as! Int
+                let unreadCount = result.value!["data"] as! Int
 //                unreadCount += 18
                 success(data: unreadCount)
         }

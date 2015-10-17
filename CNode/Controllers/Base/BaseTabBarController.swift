@@ -20,7 +20,7 @@ class BaseTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBar.tintColor = UIColor.primaryColor()
+        self.tabBar.backgroundColor = Theme.color.tabBarBackground()
     }
 
     func addTab(title: String?, icon: String?, controller: UIViewController?) {
@@ -32,7 +32,7 @@ class BaseTabBarController: UITabBarController {
         navigationController.navigationBar.tintColor = UIColor.whiteColor()
         navigationController.navigationBar.barStyle = UIBarStyle.Black
         navigationController.navigationBar.translucent = false
-        navigationController.navigationBar.barTintColor = UIColor.primaryColor()
+        navigationController.navigationBar.barTintColor = Theme.color.navigationBarBackground()
         navigationController.navigationBar.shadowImage = nil
         navigationController.navigationItem.leftBarButtonItem?.tintColor = UIColor.whiteColor()
         self.addChildViewController(navigationController)

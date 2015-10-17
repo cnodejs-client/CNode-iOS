@@ -25,12 +25,6 @@
 "TITLE_LOGIN" = "登录";
 "TITLE_ABOUT" = "关于";
 
-// TabBar
-"TAB_TOPIC" = "主题";
-"TAB_COLLECT" = "收藏";
-"TAB_MESSAGE" = "消息";
-"TAB_MY" = "我的";
-
 // Action
 "ACTION_CANCEL" = "取消";
 "ACTION_CLOSE" = "关闭";

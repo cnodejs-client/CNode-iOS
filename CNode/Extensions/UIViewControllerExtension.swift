@@ -28,11 +28,12 @@ extension UIViewController {
     public func presentViewController(viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?, leftButtonType: LeftButtonType) {
         let navigationController: UINavigationController = BaseNavigationController.init(rootViewController: viewControllerToPresent, leftButtonType: leftButtonType)
         navigationController.addChildViewController(viewControllerToPresent)
-        navigationController.navigationBar.tintColor = UIColor.whiteColor()
-        navigationController.navigationBar.barStyle = UIBarStyle.Black
+//        navigationController.navigationBar.tintColor = UIColor.whiteColor()
+//        navigationController.navigationBar.barStyle = UIBarStyle.Black
         navigationController.navigationBar.translucent = false
-        navigationController.navigationBar.barTintColor = UIColor.primaryColor()
-        navigationController.navigationBar.shadowImage = nil
+//        navigationController.navigationBar.barTintColor = Theme.color.navigationBarBackground()
+//        navigationController.navigationBar.shadowImage = nil
+        viewControllerToPresent.view.backgroundColor = Theme.color.windowBackground()
         self.presentViewController(navigationController, animated: animated, completion: completion)
     }
 }

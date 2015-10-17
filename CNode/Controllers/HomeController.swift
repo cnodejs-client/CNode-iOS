@@ -16,20 +16,20 @@
 
 class HomeController: BaseTabBarController {
     
-    var topicController    : TopicController?       // 主题
-    var messagesController : MessagesController?    // 消息
-    var myController       : MyController?          // 我的
+    var topicListController : TopicListController?   // 主题
+    var messagesController  : MessagesController?    // 消息
+    var myController        : MyController?          // 我的
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.topicController     = TopicController()
+        self.topicListController = TopicListController(flag: .All)
         self.messagesController  = MessagesController()
         self.myController        = MyController()
         
         // 增加Tab
-        self.addTab("TAB_TOPIC".localized    , icon: "ic_tab_topic"    , controller: self.topicController)
-        self.addTab("TAB_MESSAGES".localized , icon: "ic_tab_messages" , controller: self.messagesController)
-        self.addTab("TAB_MY".localized       , icon: "ic_tab_my"       , controller: self.myController)
+        self.addTab("TITLE_TOPIC".localized    , icon: "ic_tab_topic"    , controller: self.topicListController)
+        self.addTab("TITLE_MESSAGES".localized , icon: "ic_tab_messages" , controller: self.messagesController)
+        self.addTab("TITLE_MY".localized       , icon: "ic_tab_my"       , controller: self.myController)
     }
     
     override func viewDidAppear(animated: Bool) {

@@ -15,6 +15,7 @@
  */
 
 extension UIColor {
+
     // MAKE: code from https://github.com/yeahdongcn/UIColor-Hex-Swift
     public convenience init(rgba: String) {
         var red:   CGFloat = 0.0
@@ -59,16 +60,4 @@ extension UIColor {
         self.init(red:red, green:green, blue:blue, alpha:alpha)
     }
 
-    class func primaryColor() -> UIColor {
-    	// #41ab54
-        return UIColor(rgba: "#444444")
-    }
-    
-    class func primaryTextColor() -> UIColor {
-        return UIColor.blackColor()
-    }
-    
-    class func primaryButtonBarColor() -> UIColor {
-        return UIColor(red:0.95, green:0.95, blue:0.95, alpha:1.0)
-    }
 }

@@ -27,12 +27,6 @@
 "TITLE_PUBLISH_TOPIC" = "发布话题";
 "TITLE_TOPIC_DETAIL" = "话题详情";
 
-// TabBar
-"TAB_TOPIC" = "话题";
-"TAB_COLLECT" = "收藏";
-"TAB_MESSAGES" = "消息";
-"TAB_MY" = "我的";
-
 // Action
 "ACTION_CANCEL" = "取消";
 "ACTION_CLOSE" = "关闭";

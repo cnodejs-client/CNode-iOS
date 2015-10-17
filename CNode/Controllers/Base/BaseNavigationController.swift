@@ -26,9 +26,7 @@ class BaseNavigationController: UINavigationController {
     var leftButtonType: LeftButtonType = LeftButtonType.Close
 
     init(rootViewController: UIViewController, leftButtonType: LeftButtonType) {
-//        super.init(rootViewController: rootViewController)
         super.init(nibName: nil, bundle: nil)
-//        self.viewControllers = rootViewController
         self.leftButtonType = leftButtonType
     }
 

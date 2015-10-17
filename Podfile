@@ -23,17 +23,14 @@ target 'CNode' do
   pod 'ObjectMapper', '~> 0.17'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
   pod 'SVProgressHUD'
-  pod 'XLPagerTabStrip', '~> 2.0'
   pod 'MJRefresh'
   pod 'Ono'
   pod 'TTTAttributedLabel'
   pod '1PasswordExtension', '~> 1.6.1'
   pod 'SnapKit'
   pod 'SDWebImage', '~>3.7'
-  pod 'UITableView+FDTemplateLayoutCell', '~> 1.4.beta'
   pod 'UIActionSheet+Blocks'
   pod 'UIAlertController+Blocks'
-  pod 'UIBarButtonItem-Badge', :git => 'https://github.com/mikeMTOL/UIBarButtonItem-Badge.git'
-  pod 'ZBarSDK', '~> 1.3.1'
+  pod 'NJKWebViewProgress'
 end
 
