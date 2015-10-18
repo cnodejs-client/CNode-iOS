@@ -29,6 +29,7 @@ class ApiClient {
             return false
         } else {
             let json = JSON(result.value!)
+            print(json)
             if let msg = json["error_msg"].string {
                 failure(code: -1, message: msg)
                 return false

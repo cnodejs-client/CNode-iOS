@@ -255,6 +255,8 @@ class LoginController: BaseGroupedListController {
             self.tfPassword.text = loginDictionary?[AppExtensionPasswordKey] as? String
             // 判断是否隐藏1password按钮
             self.usernameFieldDidChange(self.tfUsername)
+            // 自动登录
+            self.login(self.btnLogin)
         })
     }
     

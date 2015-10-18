@@ -23,7 +23,7 @@ class BaseTabBarController: UITabBarController {
         self.tabBar.backgroundColor = Theme.color.tabBarBackground()
     }
 
-    func addTab(title: String?, icon: String?, controller: UIViewController?) {
+    func addTab(title: String?, icon: String?, controller: UIViewController?) -> UITabBarItem {
         controller?.title = title
         if (icon != nil) {
             controller?.tabBarItem.image = UIImage(named: icon!)
@@ -36,5 +36,6 @@ class BaseTabBarController: UITabBarController {
         navigationController.navigationBar.shadowImage = nil
         navigationController.navigationItem.leftBarButtonItem?.tintColor = UIColor.whiteColor()
         self.addChildViewController(navigationController)
+        return (controller!.tabBarItem)!
     }
 }

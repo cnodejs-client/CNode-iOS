@@ -17,16 +17,11 @@
 import UIKit
 import SDWebImage
 
-class MyController: BaseGroupedListController {
-    // section 1
-    let CELL_MY_PROFILE  : String = "ID_CELL_MY_PROFILE"
-    let CELL_MY_BLOG     : String = "ID_CELL_MY_BLOG"
-    let CELL_MY_FAVORITES: String = "ID_CELL_MY_FAVORITES"
-    // section 2
-    let CELL_MY_PROJECTS : String = "ID_CELL_MY_PROJECTS"
-    let CELL_MY_TEAMS    : String = "ID_CELL_MY_TEAMS"
+class MyController: BaseListController<Topic> {
 
     var btnSettings: UIBarButtonItem?
+
+    var userProfileHeader: UserProfileHeader = UserProfileHeader()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,82 +35,40 @@ class MyController: BaseGroupedListController {
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44.0
-
+        
+        self.tableView.tableHeaderView = self.userProfileHeader
+//        self.tableView.contentInset = UIEdgeInsetsMake(120, 0, 0, 0)
+        self.tableView.header.backgroundColor = Theme.color.navigationBarBackground()
+        self.firstRefreshing()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if (!User.isLogged()) {
-            self.navigationItem.leftBarButtonItem = nil
-        }
-        self.tableView.reloadData()
+        self.userProfileHeader.bind(User.current())
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch (section) {
-        case 0:
-            return 1
-        case 1:
-            return 2
-        default:
-            return 0
-        }
-    }
+    
+//    override func loadData(page: Int) {
+//        let success = {
+//            (data: [Topic]) -> Void in
+//            // 下拉刷新时清空数据源
+//            if (page == ApiClient.PAGE_FIRST) {
+//                self.dataSource = []
+//            }
+//            self.dataSource += data
+//            // 停止刷新中...
+//            self.endRefreshing()
+//            self.tableView.reloadData()
+//        };
+//        let failure = {
+//            (code: Int, message: String) -> Void in
+//            self.endRefreshing()
+//        };
+//        ApiClient.topicList(page, tab: "all", success: success, failure: failure)
+//    }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var title: String = "";
         var identifier: String = "";
-        switch (indexPath.section) {
-        case 0:
-            switch (indexPath.row) {
-            case 0:
-                title = "我的动弹"
-                identifier = CELL_MY_PROFILE
-                let cell = MyProfileCell()
-                cell.bind(User.current())
-                cell.restorationIdentifier = identifier
-                return cell
-            case 1:
-                title = "我的博客"
-                identifier = CELL_MY_BLOG
-                break
-            case 2:
-                title = "我的收藏"
-                identifier = CELL_MY_FAVORITES
-                if (User.isLogged()) {
-                    //count = (User.current()?.favoritecount)!
-                }
-                break
-            default:
-                break
-            }
-            break
-        case 1:
-            switch (indexPath.row) {
-            case 0:
-                title = "我的项目"
-                identifier = CELL_MY_PROJECTS
-                break
-            case 1:
-                title = "我的团队"
-                identifier = CELL_MY_TEAMS
-                break
-            default:
-                break
-            }
-            break
-        default:
-            break
-        }
         let cell = UITableViewCell(style: .Value1, reuseIdentifier: "Cell")
         cell.textLabel?.text = title
         cell.restorationIdentifier = identifier
@@ -125,39 +78,6 @@ class MyController: BaseGroupedListController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell: UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
-        switch (cell.restorationIdentifier!) {
-        case CELL_MY_PROFILE:
-            if (!User.isLogged()) {
-                let controller: LoginController = LoginController()
-                self.presentViewController(controller, animated: true, leftButtonType: .Cancel)
-            }
-//            let controller: TweetListController = TweetListController(flag: .My)
-//            controller.hidesBottomBarWhenPushed = true
-//            self.navigationController?.pushViewController(controller, animated: true)
-            break
-        case CELL_MY_BLOG:
-//            let controller: BlogListController = BlogListController(flag: BlogListFlag.My)
-//            controller.hidesBottomBarWhenPushed = true
-//            self.navigationController?.pushViewController(controller, animated: true)
-            break
-        case CELL_MY_FAVORITES:
-//            let controller: FavoriteListController = FavoriteListController()
-//            controller.hidesBottomBarWhenPushed = true
-//            self.navigationController?.pushViewController(controller, animated: true)
-            break
-        case CELL_MY_PROJECTS:
-//            let controller: ProjectListController = ProjectListController()
-//            controller.hidesBottomBarWhenPushed = true
-//            self.navigationController?.pushViewController(controller, animated: true)
-            break
-        case CELL_MY_TEAMS:
-//            let controller: TeamController = TeamController()
-//            controller.hidesBottomBarWhenPushed = true
-//            self.navigationController?.pushViewController(controller, animated: true)
-            break
-        default:
-            return
-        }
         cell.selected = false
     }
 

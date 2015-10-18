@@ -48,11 +48,6 @@ class TopicListController: BaseListController<Topic> {
         self.firstRefreshing()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     override func loadData(page: Int) {
         let success = {
             (data: [Topic]) -> Void in

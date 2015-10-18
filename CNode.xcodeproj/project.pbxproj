@@ -31,7 +31,7 @@
 		87A9ECFE06E8756146513CA3 /* MessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9E4A12CBACAFE201FD4E3 /* MessagesController.swift */; };
 		87A9EDC661E1DD188AB4090E /* BaseGroupedListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9EDE261B21BCBFBA2B7E1 /* BaseGroupedListController.swift */; };
 		87A9EEA5BE0DDE364CC53001 /* TopicListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9ED54295B6F0B7A9A4F36 /* TopicListController.swift */; };
-		87A9EF744B9AEF9AE24A5CA0 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9EFAFFFC474EFFF791A0F /* MyProfileView.swift */; };
+		87A9EF744B9AEF9AE24A5CA0 /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9EFAFFFC474EFFF791A0F /* UserProfileHeader.swift */; };
 		87A9EFE5790B5834D4D7ECE6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9EEA5226E7F1704C5FD18 /* StringExtension.swift */; };
 		E94231DDA0F03033C30A0D29 /* Pods_CNode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E26ECA319FBE05E71505B1C /* Pods_CNode.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F51F658D1BC8069D00ED7E04 /* TopicContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F658C1BC8069D00ED7E04 /* TopicContentCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -79,7 +79,7 @@
 		87A9EE9808716758B4766F6D /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		87A9EEA5226E7F1704C5FD18 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		87A9EECAA9F4EAC546DFE493 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
-		87A9EFAFFFC474EFFF791A0F /* MyProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
+		87A9EFAFFFC474EFFF791A0F /* UserProfileHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
 		87A9EFFDA2308583F43BA32A /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		8D3D63AA61D807BF5993D1AC /* Pods-CNode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CNode.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CNode/Pods-CNode.debug.xcconfig"; sourceTree = "<group>"; };
 		F51F658C1BC8069D00ED7E04 /* TopicContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicContentCell.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				87A9ECD8C00B2F638D43EC96 /* Cells */,
-				87A9EFAFFFC474EFFF791A0F /* MyProfileView.swift */,
+				87A9EFAFFFC474EFFF791A0F /* UserProfileHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -425,7 +425,7 @@
 				87A9E2014F0D51F8105EA916 /* MyController.swift in Sources */,
 				87A9ECFE06E8756146513CA3 /* MessagesController.swift in Sources */,
 				87A9E6394EA8E9302E1B75E5 /* CollectController.swift in Sources */,
-				87A9EF744B9AEF9AE24A5CA0 /* MyProfileView.swift in Sources */,
+				87A9EF744B9AEF9AE24A5CA0 /* UserProfileHeader.swift in Sources */,
 				87A9EEA5BE0DDE364CC53001 /* TopicListController.swift in Sources */,
 				87A9EA46114B68D44731B76A /* Topic.swift in Sources */,
 				F5D679311BC53ACB00CCA2BC /* ReplyCell.swift in Sources */,

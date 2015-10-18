@@ -33,15 +33,17 @@ extension UIButton {
         
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 5.0
-        self.layer.borderWidth = 1
+        self.layer.borderWidth = 1.4
         
         var backgroundColor: UIColor?
         var borderColor: UIColor?
+        var titleColorNormal: UIColor? = UIColor.whiteColor()
         
         switch (style) {
         case .Default:
             backgroundColor = UIColor(rgba: "#ffffff")
             borderColor = UIColor(rgba: "#cccccc")
+            titleColorNormal = UIColor(rgba: "#494c53")
             break
         case .Primary:
             backgroundColor = UIColor(rgba: "#337ab7")
@@ -75,5 +77,6 @@ extension UIButton {
             self.layer.borderColor = borderColor?.CGColor
         }
         self.titleLabel?.font = UIFont.systemFontOfSize(15)
+        self.setTitleColor(titleColorNormal, forState: UIControlState.Normal)
     }
 }

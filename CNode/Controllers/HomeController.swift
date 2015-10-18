@@ -19,6 +19,10 @@ class HomeController: BaseTabBarController {
     var topicListController : TopicListController?   // 主题
     var messagesController  : MessagesController?    // 消息
     var myController        : MyController?          // 我的
+    
+    var tbiTopic: UITabBarItem?
+    var tbiMessages: UITabBarItem?
+    var tbiMy: UITabBarItem?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +31,9 @@ class HomeController: BaseTabBarController {
         self.myController        = MyController()
         
         // 增加Tab
-        self.addTab("TITLE_TOPIC".localized    , icon: "ic_tab_topic"    , controller: self.topicListController)
-        self.addTab("TITLE_MESSAGES".localized , icon: "ic_tab_messages" , controller: self.messagesController)
-        self.addTab("TITLE_MY".localized       , icon: "ic_tab_my"       , controller: self.myController)
+        self.tbiTopic    = self.addTab("TITLE_TOPIC".localized    , icon: "ic_tab_topic"    , controller: self.topicListController)
+        self.tbiMessages = self.addTab("TITLE_MESSAGES".localized , icon: "ic_tab_messages" , controller: self.messagesController)
+        self.tbiMy       = self.addTab("TITLE_MY".localized       , icon: "ic_tab_my"       , controller: self.myController)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -55,9 +59,13 @@ class HomeController: BaseTabBarController {
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
+        if (item != self.tbiTopic) {
+            if (!User.isLogged()) {
+                let controller: LoginController = LoginController()
+                self.presentViewController(controller, animated: true, leftButtonType: .Cancel)
+            }
+        }
     }
 
 }
