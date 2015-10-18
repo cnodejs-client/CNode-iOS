@@ -99,6 +99,20 @@ class TopicListController: BaseListController<Topic> {
         }
     }
 
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (self.tableView.respondsToSelector(Selector("setSeparatorInset:"))) {
+            self.tableView.separatorInset = UIEdgeInsetsZero
+        }
+
+        if (self.tableView.respondsToSelector(Selector("setLayoutMargins:"))) {
+            self.tableView.layoutMargins = UIEdgeInsetsZero
+        }
+
+        if (cell.respondsToSelector(Selector("setLayoutMargins:"))) {
+            cell.layoutMargins = UIEdgeInsetsZero
+        }
+    }
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: TopicCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TopicCell
         let topic: Topic = self.dataSource[indexPath.row]

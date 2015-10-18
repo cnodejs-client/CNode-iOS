@@ -37,8 +37,8 @@ class MyController: BaseListController<Topic> {
         self.tableView.estimatedRowHeight = 44.0
         
         self.tableView.tableHeaderView = self.userProfileHeader
-//        self.tableView.contentInset = UIEdgeInsetsMake(120, 0, 0, 0)
         self.tableView.header.backgroundColor = Theme.color.navigationBarBackground()
+        self.tableView.backgroundColor = UIColor(rgba: "#e1e1e1")
         self.firstRefreshing()
     }
     

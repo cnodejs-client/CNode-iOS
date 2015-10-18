@@ -36,43 +36,46 @@ class TopicCell: UITableViewCell {
         
         // 标题
         self.titleLabel.numberOfLines = 0
-        self.titleLabel.font = UIFont.boldSystemFontOfSize(16)
+        self.titleLabel.textColor = Theme.color.content()
+        self.titleLabel.font = UIFont.systemFontOfSize(15)
         // 头像
         self.avatar.backgroundColor = UIColor.blueColor()
         self.avatar.multipleTouchEnabled = true
         self.avatar.userInteractionEnabled = true
+        self.avatar.layer.masksToBounds = true
+        self.avatar.layer.cornerRadius = 5
         // 作者
-        self.author.textColor = UIColor.grayColor()
-        self.author.font = UIFont.systemFontOfSize(14)
+        self.author.textColor = Theme.color.title()
+        self.author.font = UIFont.boldSystemFontOfSize(15)
         // 日期
         self.create_at.textColor = UIColor.grayColor()
-        self.create_at.font = UIFont.systemFontOfSize(14)
+        self.create_at.font = UIFont.systemFontOfSize(12)
         
         // top -> left -> bottom -> right
-        let padding: UIEdgeInsets = UIEdgeInsetsMake(8, 16, 8, 8)
+        let padding: UIEdgeInsets = UIEdgeInsetsMake(8, 8, 8, 8)
         
         self.avatar.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(padding.top)
-            make.right.equalTo(-padding.right)
-            make.width.equalTo(30)
-            make.height.equalTo(30)
+            make.left.equalTo(padding.left)
+            make.width.equalTo(45)
+            make.height.equalTo(45)
         }
         self.titleLabel.snp_makeConstraints { (make) -> Void in
-            make.top.equalTo(padding.top)
-            make.left.equalTo(padding.left)
-            make.right.equalTo(self.avatar.snp_left).inset(-8)
+            make.top.equalTo(self.author.snp_bottom).inset(-5)
+            make.left.equalTo(self.avatar.snp_right).inset(-8)
+            make.right.equalTo(-padding.right)
         }
         self.author.snp_makeConstraints { (make) -> Void in
-            make.top.equalTo(self.titleLabel.snp_bottom).inset(-5)
-            make.left.equalTo(padding.left)
+            make.top.equalTo(padding.top)
+            make.left.equalTo(self.avatar.snp_right).inset(-5)
         }
         self.create_at.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(self.author.snp_right).inset(-5)
+            make.right.equalTo(-padding.right)
             make.centerY.equalTo(self.author)
         }
         self.contentView.snp_makeConstraints { (make) -> Void in
             make.edges.equalTo(self)
-            make.bottom.equalTo(self.author.snp_bottom).inset(-padding.bottom)
+            make.bottom.equalTo(self.titleLabel.snp_bottom).inset(-padding.bottom)
         }
     }
 
