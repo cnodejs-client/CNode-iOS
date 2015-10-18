@@ -38,14 +38,25 @@ class TopicListController: BaseListController<Topic> {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var btnPublish: UIBarButtonItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.btnPublish = UIBarButtonItem(title: "ACTION_PUBLISH_TOPIC".localized, style: .Plain, target: self, action: "publishTopic:")
+        self.navigationItem.rightBarButtonItem = btnPublish
         
         self.tableView.registerClass(TopicCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44.0
         
         self.firstRefreshing()
+    }
+    
+    func publishTopic(sender: UIBarButtonItem) {
+        let controller: PublishTopicController = PublishTopicController()
+        controller.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 
     override func loadData(page: Int) {

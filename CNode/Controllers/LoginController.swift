@@ -22,15 +22,14 @@ class LoginController: BaseGroupedListController {
     var tbcUsername: UITableViewCell = UITableViewCell(style: .Default, reuseIdentifier: "Cell_Username")
     var tbcPassword: UITableViewCell = UITableViewCell(style: .Default, reuseIdentifier: "Cell_Password")
     var tbcLogin: UITableViewCell = UITableViewCell(style: .Default, reuseIdentifier: "Cell_Login")
-    var tbcForgotPassword: UITableViewCell = UITableViewCell(style: .Default, reuseIdentifier: "Cell_Login")
+    var tbcForgotPassword: UITableViewCell = UITableViewCell(style: .Default, reuseIdentifier: "Cell_ForgotPassword")
     
     var btnOnepassword: UIButton = UIButton()
     var tfUsername: UITextField = UITextField()
     var tfPassword: UITextField = UITextField()
     var btnLogin: UIButton = UIButton(frame: CGRectMake(0, 0, 0, 0), style: .Primary)
     var btnForgotPassword: UIButton = UIButton()
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "TITLE_LOGIN".localized
@@ -161,11 +160,6 @@ class LoginController: BaseGroupedListController {
         self.tfUsername.addTarget(self, action: "usernameFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
         self.btnLogin.addTarget(self, action: "login:", forControlEvents: .TouchUpInside)
         self.btnForgotPassword.addTarget(self, action: "forgotPassword:", forControlEvents: .TouchUpInside)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
