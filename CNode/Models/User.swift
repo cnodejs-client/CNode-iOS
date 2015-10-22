@@ -43,6 +43,10 @@ class User: Mappable {
         create_at       <- map["create_at"]
         score           <- map["score"]
         token           <- map["token"]
+        
+        if (avatar_url!.hasPrefix("//gravatar.com")) {
+            avatar_url = "http:\(avatar_url!)"
+        }
     }
     
     static func current() -> User? {
