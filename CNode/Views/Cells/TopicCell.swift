@@ -36,7 +36,7 @@ class TopicCell: UITableViewCell {
         
         // 标题
         self.titleLabel.numberOfLines = 0
-        self.titleLabel.textColor = Theme.color.content()
+        self.titleLabel.textColor = UIColor(rgba: "#333")
         self.titleLabel.font = UIFont.systemFontOfSize(15)
         // 头像
         self.avatar.backgroundColor = UIColor.blueColor()
@@ -84,9 +84,13 @@ class TopicCell: UITableViewCell {
     }
     
     func bind(data: Topic) -> CGFloat {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ"
+        let createAt = dateFormatter.dateFromString(data.create_at!)
+        
         self.titleLabel.text = data.title
         self.author.text = data.author?.loginname
-        self.create_at.text = data.create_at
+        self.create_at.text = createAt?.timeAgoSinceNow()
         self.avatar.sd_setImageWithURL(NSURL(string: data.author!.avatar_url!))
         self.setNeedsLayout()
         return 0

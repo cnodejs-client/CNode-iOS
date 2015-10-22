@@ -32,5 +32,6 @@ target 'CNode' do
   pod 'UIActionSheet+Blocks'
   pod 'UIAlertController+Blocks'
   pod 'NJKWebViewProgress'
+  pod 'DateTools', '~> 1.7.0'
 end
 

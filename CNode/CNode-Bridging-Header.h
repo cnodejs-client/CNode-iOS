@@ -25,3 +25,4 @@
 #import "UIBarButtonItem_Badge/UIBarButtonItem+Badge.h"
 #import "ZBarSDK/ZBarSDK.h"
 #import "NJKWebViewProgress/NJKWebViewProgress.h"
+#import "DateTools/DateTools.h"
