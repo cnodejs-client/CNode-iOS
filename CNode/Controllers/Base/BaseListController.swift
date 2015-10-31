@@ -17,16 +17,14 @@
 import UIKit
 import MJRefresh
 
-// MAKE:
+// MAKE: 通过泛型快速创建列表的父类
 class BaseListController<T>: UITableViewController {
     
     init() {
         super.init(style: .Plain)
     }
-
-    var loadingView: UIActivityIndicatorView = UIActivityIndicatorView()
-    var emptyView: UIButton = UIButton()
-    var errorView: UIButton = UIButton()
+    
+    var loadStatusView: NKLoadStatusView = NKLoadStatusView()
 
     var dataSource: [T] = []
 
@@ -35,17 +33,8 @@ class BaseListController<T>: UITableViewController {
         // 下拉刷新
         let header = MJRefreshNormalHeader { () -> Void in
             self.tableView.footer.resetNoMoreData()
-            if (self.dataSource.count == 0) {
-                self.loadingView.hidden = false
-                self.emptyView.hidden = true
-                self.errorView.hidden = true
-                self.loadingView.startAnimating()
-            } else {
-                self.loadingView.hidden = true
-                self.emptyView.hidden = true
-                self.errorView.hidden = true
-            }
             self.loadData(ApiClient.PAGE_FIRST)
+            self.loadStatusView.show(self.dataSource.count == 0 ? .Loading : .Default)
         }
         // 隐藏时间
         header.lastUpdatedTimeLabel!.hidden = true
@@ -61,26 +50,9 @@ class BaseListController<T>: UITableViewController {
         self.tableView.footer = footer
         // 不显示多余的分割线
         self.tableView.tableFooterView = UIView()
-        
-        var btnFrame: CGRect = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: self.tableView.frame.height)
-        self.loadingView.frame = btnFrame
-        self.loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
-        
-        self.emptyView.frame = btnFrame
-        self.emptyView.setTitleColor(UIColor.grayColor(), forState: .Normal)
-        self.emptyView.setTitle("空空如也~", forState: .Normal)
-        
-        self.errorView.frame = btnFrame
-        self.errorView.setTitleColor(UIColor.grayColor(), forState: .Normal)
-        self.errorView.setTitle("Error", forState: .Normal)
-
-        self.view.addSubview(self.loadingView)
-        self.view.addSubview(self.emptyView)
-        self.view.addSubview(self.errorView)
-        
-        self.loadingView.hidden = true
-        self.emptyView.hidden = true
-        self.errorView.hidden = true
+        // 加载状态视图
+        self.loadStatusView = NKLoadStatusView(frame: self.view.bounds)
+        self.view.addSubview(self.loadStatusView)
         
         self.tableView.separatorColor = Theme.color.separatorColor()
     }
@@ -92,10 +64,7 @@ class BaseListController<T>: UITableViewController {
 
     // MAKE: 首次进入时刷新数据
     func firstRefreshing() {
-        self.loadingView.hidden = false
-        self.loadingView.startAnimating()
-        self.emptyView.hidden = true
-        self.errorView.hidden = true
+        self.loadStatusView.show(self.dataSource.count == 0 ? .Loading : .Default)
         // 延时0.3秒后执行加载数据操作，延时是为了Loading不会因为加载速度过快造成一闪而过的不好体验
         self.delay(0.3) { () -> () in
             self.loadData(ApiClient.PAGE_FIRST)
@@ -119,18 +88,7 @@ class BaseListController<T>: UITableViewController {
         if (!self.hasMore()) {
             self.tableView.footer.noticeNoMoreData()
         }
-        if self.loadingView.isAnimating() {
-            self.loadingView.stopAnimating()
-        }
-        if (self.dataSource.count == 0) {
-            self.loadingView.hidden = true
-            self.emptyView.hidden = false
-            self.errorView.hidden = true
-        } else {
-            self.loadingView.hidden = true
-            self.emptyView.hidden = true
-            self.errorView.hidden = true
-        }
+        self.loadStatusView.show(self.dataSource.count == 0 ? .Empty : .Default)
     }
     
     // MAKE: 加载数据
