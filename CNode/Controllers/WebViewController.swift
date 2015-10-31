@@ -37,7 +37,6 @@ class WebViewController: BaseViewController, UIWebViewDelegate, NJKWebViewProgre
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.webView.frame = self.view.bounds
         self.webView.delegate = progressProxy
         self.progressProxy.webViewProxyDelegate = self
         self.progressProxy.progressDelegate = self
@@ -49,6 +48,12 @@ class WebViewController: BaseViewController, UIWebViewDelegate, NJKWebViewProgre
         self.progressView?.setProgress(0, animated: true)
 //        self.progressView.autoresizingMask = (UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleTopMargin)
         self.view.addSubview(self.webView)
+        self.webView.snp_makeConstraints { (make) -> Void in
+            make.left.equalTo(0)
+            make.right.equalTo(0)
+            make.top.equalTo(0)
+            make.bottom.equalTo(0)
+        }
 
         if (pageTitle != nil) {
             self.title = pageTitle
