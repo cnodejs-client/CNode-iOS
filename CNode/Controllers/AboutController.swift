@@ -22,11 +22,6 @@ class AboutController: BaseGroupedListController {
         self.title = "TITLE_ABOUT".localized
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }

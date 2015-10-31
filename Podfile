@@ -33,5 +33,7 @@ target 'CNode' do
   pod 'UIAlertController+Blocks'
   pod 'NJKWebViewProgress'
   pod 'DateTools', '~> 1.7.0'
+  pod 'MWPhotoBrowser', '~> 2.1.1'
+  pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 end
 

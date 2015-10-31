@@ -15,7 +15,6 @@
  */
 
 import UIKit
-import XLPagerTabStrip
 
 enum TopicListFlag {
     case All    // 全部
