@@ -27,6 +27,8 @@ class User: Mappable {
     var create_at: String?      // 注册日期
     var score: Int = 0          // 积分
     var token: String?          // Token
+    var recent_topics: [Topic]  = [] // 最近创建的话题
+    var recent_replies: [Topic] = [] // 最近参与的话题
     
     init() { }
 
@@ -43,6 +45,8 @@ class User: Mappable {
         create_at       <- map["create_at"]
         score           <- map["score"]
         token           <- map["token"]
+        recent_topics   <- map["recent_topics"]
+        recent_replies  <- map["recent_replies"]
         
         if (avatar_url!.hasPrefix("//gravatar.com")) {
             avatar_url = "http:\(avatar_url!)"
