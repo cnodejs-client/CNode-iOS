@@ -17,17 +17,18 @@
 struct URLs {
     static let baseURL: String = "https://cnodejs.org"
     static let apiVersion: String = "/api/v1"
+    static let apiURL = baseURL + apiVersion
     // user
     static let LOGIN: String = baseURL + "/signin"
     static let LOGIN_WITH_GITHUB: String = baseURL + "/auth/github"
     static let FORGOT_PASSWORD: String = baseURL + "/search_pass"
     static let SETTING: String = baseURL + "/setting"
-    static let PROFILE: String = baseURL + apiVersion + "/user/"
+    static let PROFILE: String = apiURL + "/user/"
     // topics
-    static let TOPIC_LIST: String = baseURL + apiVersion + "/topics"
-    static let TOPIC_DETAIL: String = baseURL + apiVersion + "/topic/"
+    static let TOPIC_LIST: String = apiURL + "/topics"
+    static let TOPIC_DETAIL: String = apiURL + "/topic/"
     // messages
-    static let MESSAGE_COUNT: String = baseURL + apiVersion + "/message/count"
-    static let MESSAGE_LIST: String = baseURL + apiVersion + "/messages"
-    static let MESSAGE_MARK_ALL_AS_READ: String = baseURL + apiVersion + "/messages/mark_all"
+    static let MESSAGE_COUNT: String = apiURL + "/message/count"
+    static let MESSAGE_LIST: String = apiURL + "/messages"
+    static let MESSAGE_MARK_ALL_AS_READ: String = apiURL + "/messages/mark_all"
 }

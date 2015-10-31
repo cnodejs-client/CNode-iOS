@@ -243,4 +243,22 @@ class ApiClient {
                 success(data: messages!.count > 0)
         }
     }
+    
+    
+    
+    // MAKE: 主题列表
+    static func profileByUsername(username: String, success: (data: User) -> Void, failure: (code:Int, message:String) -> Void) {
+        let parameters: [String: AnyObject] = [:]
+        Alamofire.request(.GET, URLs.PROFILE + username, parameters: parameters)
+            .responseJSON {
+                (request, response, result) -> Void in
+                // 请求是否发生错误
+                if (isError(result.error, failure: failure)) {
+                    return
+                }
+                
+                let data = Mapper<User>().map(result.value!["data"])
+                success(data: data!)
+        }
+    }
 }
