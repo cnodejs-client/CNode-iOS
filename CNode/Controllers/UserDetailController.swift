@@ -14,24 +14,21 @@
  * limitations under the License.
  */
 
-import UIKit
-import SDWebImage
+class UserDetailController: BaseListController<Topic> {
 
-class MyController: BaseListController<Topic> {
-
+    init(data: User) {
+        self.user = data
+        super.init()
+    }
+    
+    var user: User?
     var btnSettings: UIBarButtonItem?
 
     var userProfileHeader: UserProfileHeader = UserProfileHeader()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "TITLE_MY".localized
-        
-        self.btnSettings = UIBarButtonItem(title: "ACTION_SETTINGS".localized, style: .Plain, target: self, action: "settings:")
-        self.navigationItem.rightBarButtonItem = btnSettings
-        
-        self.navigationController?.navigationBar.shadowImage = UIImage();
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.title = ""
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44.0
@@ -44,7 +41,7 @@ class MyController: BaseListController<Topic> {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.userProfileHeader.bind(User.current())
+        self.userProfileHeader.bind(user!)
     }
     
     override func loadData(page: Int) {
@@ -63,7 +60,7 @@ class MyController: BaseListController<Topic> {
             (code: Int, message: String) -> Void in
             self.endRefreshing()
         };
-        ApiClient.profileByUsername("alsotang", success: success, failure: failure)
+        ApiClient.profileByUsername(user!.loginname!, success: success, failure: failure)
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -93,11 +90,5 @@ class MyController: BaseListController<Topic> {
             return nil
         }
         return super.tableView(tableView, viewForHeaderInSection: section)
-    }
-
-    func settings(sender: UIBarButtonItem) {
-        let controller: SettingsController = SettingsController()
-        controller.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(controller, animated: true)
     }
 }

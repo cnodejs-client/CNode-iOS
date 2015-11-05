@@ -15,14 +15,25 @@
  */
 
 struct Theme {
+
+    static func barTintColor() -> UIColor {
+        return UIColor(rgba: "#444")
+    }
+
     struct color {
+        
+        
+        
+        
+        
+        
         // MAKE: Window背景色
         static func windowBackground() -> UIColor {
             return UIColor(rgba: "#ffffff")
         }
         // MAKE: NavigationBar背景色
         static func navigationBarBackground() -> UIColor {
-            return UIColor(rgba: "#2f373d")
+            return UIColor(rgba: "#444")
         }
         // MAKE: TabBar背景色
         static func tabBarBackground() -> UIColor {

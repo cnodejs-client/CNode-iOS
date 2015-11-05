@@ -116,6 +116,10 @@ class TopicListController: BaseListController<Topic> {
         let cell: TopicCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TopicCell
         let topic: Topic = self.dataSource[indexPath.row]
         cell.bind(topic)
+        let tapAvatarGestureRecognizer = UITapGestureRecognizer(target: self, action: "tapAvatar:")
+        cell.avatar.userInteractionEnabled = true
+        cell.avatar.tag = indexPath.row
+        cell.avatar.addGestureRecognizer(tapAvatarGestureRecognizer)
         return cell
     }
 
@@ -124,6 +128,14 @@ class TopicListController: BaseListController<Topic> {
         cell?.selected = false
         let topic: Topic = self.dataSource[indexPath.row]
         let controller: TopicDetailController = TopicDetailController(data: topic)
+        controller.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func tapAvatar(sender: UIGestureRecognizer) {
+        let row = sender.view!.tag
+        let data = self.dataSource[row]
+        let controller = UserDetailController(data: data.author!)
         controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)
     }

@@ -16,7 +16,6 @@
 		87A9E40B6938F858E89310BB /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9EBB769060C851AF8F785 /* SettingsController.swift */; };
 		87A9E4CCC6E426C7BC841186 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9E236F19F2C59D2C79244 /* HomeController.swift */; };
 		87A9E5E7F4472810AB844E18 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9EABDBC1601A3F8F49D9A /* Delay.swift */; };
-		87A9E6394EA8E9302E1B75E5 /* CollectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9E774213EAE18BF514E72 /* CollectController.swift */; };
 		87A9E65CA1E0DEB466F81831 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9E0B65251E323B18CFEB8 /* WebViewController.swift */; };
 		87A9E77CA5B1A90379D99D09 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9EE9808716758B4766F6D /* BaseTabBarController.swift */; };
 		87A9E849EB3191B2A1D6D2B5 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9ECADE3B0B3C7F3EECDC1 /* HUD.swift */; };
@@ -32,21 +31,23 @@
 		87A9EEA5BE0DDE364CC53001 /* TopicListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9ED54295B6F0B7A9A4F36 /* TopicListController.swift */; };
 		87A9EF744B9AEF9AE24A5CA0 /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9EFAFFFC474EFFF791A0F /* UserProfileHeader.swift */; };
 		87A9EFE5790B5834D4D7ECE6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9EEA5226E7F1704C5FD18 /* StringExtension.swift */; };
-		E94231DDA0F03033C30A0D29 /* Pods_CNode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E26ECA319FBE05E71505B1C /* Pods_CNode.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		F51F658D1BC8069D00ED7E04 /* TopicContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F658C1BC8069D00ED7E04 /* TopicContentCell.swift */; settings = {ASSET_TAGS = (); }; };
+		E94231DDA0F03033C30A0D29 /* Pods_CNode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E26ECA319FBE05E71505B1C /* Pods_CNode.framework */; };
+		F51F658D1BC8069D00ED7E04 /* TopicContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F658C1BC8069D00ED7E04 /* TopicContentCell.swift */; };
 		F538B69B1BBFED4700B74214 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F538B69D1BBFED4700B74214 /* Localizable.strings */; };
 		F55CD18F1BBFD9760025DE02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55CD18E1BBFD9760025DE02 /* AppDelegate.swift */; };
 		F55CD1961BBFD9760025DE02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55CD1951BBFD9760025DE02 /* Assets.xcassets */; };
 		F55CD1991BBFD9760025DE02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F55CD1971BBFD9760025DE02 /* LaunchScreen.storyboard */; };
-		F56075A61BC3E606001E6612 /* TopicDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56075A51BC3E606001E6612 /* TopicDetailController.swift */; settings = {ASSET_TAGS = (); }; };
-		F56075A81BC3E7A3001E6612 /* PublishTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56075A71BC3E7A3001E6612 /* PublishTopicController.swift */; settings = {ASSET_TAGS = (); }; };
-		F563C0221BD2245B0062D514 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F563C0211BD2245B0062D514 /* Theme.swift */; settings = {ASSET_TAGS = (); }; };
-		F563C0241BD2354F0062D514 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F563C0231BD2354F0062D514 /* UIButtonExtension.swift */; settings = {ASSET_TAGS = (); }; };
-		F5D6792F1BC52FB100CCA2BC /* Reply.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D6792E1BC52FB100CCA2BC /* Reply.swift */; settings = {ASSET_TAGS = (); }; };
-		F5D679311BC53ACB00CCA2BC /* ReplyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D679301BC53ACB00CCA2BC /* ReplyCell.swift */; settings = {ASSET_TAGS = (); }; };
-		F5D679331BC53E5E00CCA2BC /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D679321BC53E5E00CCA2BC /* Message.swift */; settings = {ASSET_TAGS = (); }; };
-		F5D679351BC5484900CCA2BC /* MessagesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D679341BC5484900CCA2BC /* MessagesResult.swift */; settings = {ASSET_TAGS = (); }; };
-		F5E01D131BC0D7340090242C /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E01D121BC0D7340090242C /* TopicCell.swift */; settings = {ASSET_TAGS = (); }; };
+		F56075A61BC3E606001E6612 /* TopicDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56075A51BC3E606001E6612 /* TopicDetailController.swift */; };
+		F56075A81BC3E7A3001E6612 /* PublishTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56075A71BC3E7A3001E6612 /* PublishTopicController.swift */; };
+		F563C0221BD2245B0062D514 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F563C0211BD2245B0062D514 /* Theme.swift */; };
+		F563C0241BD2354F0062D514 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F563C0231BD2354F0062D514 /* UIButtonExtension.swift */; };
+		F5AAE5071BE473C1001F02A4 /* UserDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AAE5061BE473C1001F02A4 /* UserDetailController.swift */; };
+		F5D6792F1BC52FB100CCA2BC /* Reply.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D6792E1BC52FB100CCA2BC /* Reply.swift */; };
+		F5D679311BC53ACB00CCA2BC /* ReplyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D679301BC53ACB00CCA2BC /* ReplyCell.swift */; };
+		F5D679331BC53E5E00CCA2BC /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D679321BC53E5E00CCA2BC /* Message.swift */; };
+		F5D679351BC5484900CCA2BC /* MessagesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D679341BC5484900CCA2BC /* MessagesResult.swift */; };
+		F5DCCB681BE467D50033ECF6 /* NKLoadStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DCCB671BE467D50033ECF6 /* NKLoadStatusView.swift */; };
+		F5E01D131BC0D7340090242C /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E01D121BC0D7340090242C /* TopicCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +62,6 @@
 		87A9E4A12CBACAFE201FD4E3 /* MessagesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesController.swift; sourceTree = "<group>"; };
 		87A9E4C305FFE9A9A9326795 /* BaseListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseListController.swift; sourceTree = "<group>"; };
 		87A9E5699612461AF4BF92E4 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
-		87A9E774213EAE18BF514E72 /* CollectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectController.swift; sourceTree = "<group>"; };
 		87A9E788A840B3AB95FE7223 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		87A9E7EC6DDFC2A612220705 /* MyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyController.swift; sourceTree = "<group>"; };
 		87A9E915FA267BBA2C0F2C6F /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
@@ -92,10 +92,12 @@
 		F56075A71BC3E7A3001E6612 /* PublishTopicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishTopicController.swift; sourceTree = "<group>"; };
 		F563C0211BD2245B0062D514 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		F563C0231BD2354F0062D514 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		F5AAE5061BE473C1001F02A4 /* UserDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailController.swift; sourceTree = "<group>"; };
 		F5D6792E1BC52FB100CCA2BC /* Reply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reply.swift; sourceTree = "<group>"; };
 		F5D679301BC53ACB00CCA2BC /* ReplyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplyCell.swift; sourceTree = "<group>"; };
 		F5D679321BC53E5E00CCA2BC /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		F5D679341BC5484900CCA2BC /* MessagesResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesResult.swift; sourceTree = "<group>"; };
+		F5DCCB671BE467D50033ECF6 /* NKLoadStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKLoadStatusView.swift; sourceTree = "<group>"; };
 		F5E01D121BC0D7340090242C /* TopicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,6 +149,7 @@
 			children = (
 				87A9ECD8C00B2F638D43EC96 /* Cells */,
 				87A9EFAFFFC474EFFF791A0F /* UserProfileHeader.swift */,
+				F5DCCB671BE467D50033ECF6 /* NKLoadStatusView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -173,11 +176,11 @@
 				87A9EBB769060C851AF8F785 /* SettingsController.swift */,
 				87A9E7EC6DDFC2A612220705 /* MyController.swift */,
 				87A9E4A12CBACAFE201FD4E3 /* MessagesController.swift */,
-				87A9E774213EAE18BF514E72 /* CollectController.swift */,
 				87A9ED54295B6F0B7A9A4F36 /* TopicListController.swift */,
 				F56075A51BC3E606001E6612 /* TopicDetailController.swift */,
 				F56075A71BC3E7A3001E6612 /* PublishTopicController.swift */,
 				87A9E0B65251E323B18CFEB8 /* WebViewController.swift */,
+				F5AAE5061BE473C1001F02A4 /* UserDetailController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -415,12 +418,13 @@
 				F5D6792F1BC52FB100CCA2BC /* Reply.swift in Sources */,
 				87A9EFE5790B5834D4D7ECE6 /* StringExtension.swift in Sources */,
 				87A9E3A0BDE8C7F71FCAE13C /* UIColorExtension.swift in Sources */,
+				F5DCCB681BE467D50033ECF6 /* NKLoadStatusView.swift in Sources */,
+				F5AAE5071BE473C1001F02A4 /* UserDetailController.swift in Sources */,
 				87A9EC4016A19AF00FDA2003 /* UIViewControllerExtension.swift in Sources */,
 				F56075A61BC3E606001E6612 /* TopicDetailController.swift in Sources */,
 				87A9E849EB3191B2A1D6D2B5 /* HUD.swift in Sources */,
 				87A9E2014F0D51F8105EA916 /* MyController.swift in Sources */,
 				87A9ECFE06E8756146513CA3 /* MessagesController.swift in Sources */,
-				87A9E6394EA8E9302E1B75E5 /* CollectController.swift in Sources */,
 				87A9EF744B9AEF9AE24A5CA0 /* UserProfileHeader.swift in Sources */,
 				87A9EEA5BE0DDE364CC53001 /* TopicListController.swift in Sources */,
 				87A9EA46114B68D44731B76A /* Topic.swift in Sources */,

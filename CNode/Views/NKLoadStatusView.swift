@@ -51,6 +51,7 @@ class NKLoadStatusView: UIView {
     }
 
     func show(status: LoadStatus, message: String, retry: String) {
+        self.hidden = false
         self.indicatorView.hidden = true
         self.indicatorView.stopAnimating()
         self.emptyView.hidden = true
@@ -58,6 +59,7 @@ class NKLoadStatusView: UIView {
         self.retryView.hidden = true
         switch (status) {
         case .Default:
+            self.hidden = true
             break
         case .Loading:
             self.indicatorView.hidden = false

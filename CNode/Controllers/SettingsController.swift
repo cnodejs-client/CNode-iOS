@@ -104,7 +104,7 @@ class SettingsController: BaseGroupedListController, MFMailComposeViewController
             break
         case CELL_APP_VERSION:
             let controller: AboutController = AboutController()
-            self.presentViewController(controller, animated: true, leftButtonType: .Close)
+            self.presentViewController(controller, animated: true, leftButtonType: nil)
             break
         case CELL_SHARE_THIS_APP:
             let controller = UIActivityViewController(activityItems: ["OSChina", NSURL(string: "https://github.com/lijy91/OSChina-iOS")!], applicationActivities: nil)

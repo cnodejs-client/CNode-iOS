@@ -35,7 +35,7 @@ class LoginController: BaseGroupedListController {
         self.title = "TITLE_LOGIN".localized
         
         self.tableView.separatorStyle = .None
-//        self.tableView.scrollEnabled = false
+        self.tableView.scrollEnabled = false
         
         // 标题
         self.tbcTitle.backgroundColor = UIColor.clearColor()
@@ -160,6 +160,9 @@ class LoginController: BaseGroupedListController {
         self.tfUsername.addTarget(self, action: "usernameFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
         self.btnLogin.addTarget(self, action: "login:", forControlEvents: .TouchUpInside)
         self.btnForgotPassword.addTarget(self, action: "forgotPassword:", forControlEvents: .TouchUpInside)
+        
+        self.tfUsername.text = "lijy91@foxmail.com"
+        self.tfPassword.text = "eM7zJuBN9bhskq"
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

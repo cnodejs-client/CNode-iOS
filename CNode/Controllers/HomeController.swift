@@ -30,6 +30,8 @@ class HomeController: BaseTabBarController {
         self.messagesController  = MessagesController()
         self.myController        = MyController()
         
+        self.tabBar.tintColor = Theme.barTintColor()
+        
         // 增加Tab
         self.tbiTopic    = self.addTab("TITLE_TOPIC".localized    , icon: "ic_tab_topic"    , controller: self.topicListController)
         self.tbiMessages = self.addTab("TITLE_MESSAGES".localized , icon: "ic_tab_messages" , controller: self.messagesController)
@@ -63,7 +65,7 @@ class HomeController: BaseTabBarController {
         if (item != self.tbiTopic) {
             if (!User.isLogged()) {
                 let controller: LoginController = LoginController()
-                self.presentViewController(controller, animated: true, leftButtonType: .Cancel)
+                self.presentViewController(controller, animated: true, leftButtonType: nil)
             }
         }
     }

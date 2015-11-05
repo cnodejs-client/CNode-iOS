@@ -24,17 +24,9 @@ class BaseTabBarController: UITabBarController {
     }
 
     func addTab(title: String?, icon: String?, controller: UIViewController?) -> UITabBarItem {
-        controller?.title = title
-        if (icon != nil) {
-            controller?.tabBarItem.image = UIImage(named: icon!)
-        }
-        let navigationController: UINavigationController = UINavigationController.init(rootViewController: controller!)
-        navigationController.navigationBar.tintColor = UIColor.whiteColor()
-        navigationController.navigationBar.barStyle = UIBarStyle.Black
-        navigationController.navigationBar.translucent = false
-        navigationController.navigationBar.barTintColor = Theme.color.navigationBarBackground()
-        navigationController.navigationBar.shadowImage = nil
-        navigationController.navigationItem.leftBarButtonItem?.tintColor = UIColor.whiteColor()
+        controller?.tabBarItem.title = title
+        controller?.tabBarItem.image = UIImage(named: icon!)
+        let navigationController: UINavigationController = BaseNavigationController(rootViewController: controller!)
         self.addChildViewController(navigationController)
         return (controller!.tabBarItem)!
     }

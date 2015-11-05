@@ -39,7 +39,7 @@ class TopicCell: UITableViewCell {
         self.titleLabel.textColor = UIColor(rgba: "#333")
         self.titleLabel.font = UIFont.systemFontOfSize(15)
         // 头像
-        self.avatar.backgroundColor = UIColor.blueColor()
+//        self.avatar.backgroundColor = UIColor.blueColor()
         self.avatar.multipleTouchEnabled = true
         self.avatar.userInteractionEnabled = true
         self.avatar.layer.masksToBounds = true

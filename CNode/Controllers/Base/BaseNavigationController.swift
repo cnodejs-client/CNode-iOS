@@ -16,18 +16,18 @@
 
 import UIKit
 
-public enum LeftButtonType {
+public enum BackBarButtonStyle {
     case Close
     case Cancel
+    case Back
+    case None
 }
 
 class BaseNavigationController: UINavigationController {
 
-    var leftButtonType: LeftButtonType = LeftButtonType.Close
-
-    init(rootViewController: UIViewController, leftButtonType: LeftButtonType) {
+    override init(rootViewController: UIViewController) {
         super.init(nibName: nil, bundle: nil)
-        self.leftButtonType = leftButtonType
+        self.viewControllers.append(rootViewController)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -36,25 +36,11 @@ class BaseNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        switch (leftButtonType) {
-        case .Cancel:
-            let btnCancel: UIBarButtonItem = UIBarButtonItem(title: "ACTION_CANCEL".localized, style: .Plain, target: self, action: "cancel:")
-            self.childViewControllers[0].navigationItem.leftBarButtonItem = btnCancel
-            break
-        case .Close:
-            let btnClose: UIBarButtonItem = UIBarButtonItem(title: "ACTION_CLOSE".localized, style: .Plain, target: self, action: "close:")
-            self.childViewControllers[0].navigationItem.leftBarButtonItem = btnClose
-            break
-        }
-    }
-    
-    func cancel(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-        self.navigationController?.popToRootViewControllerAnimated(true)
-    }
-    
-    func close(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        self.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationBar.barStyle = UIBarStyle.Black
+        self.navigationBar.translucent = false
+        self.navigationBar.barTintColor = Theme.barTintColor()
+        self.navigationBar.shadowImage = UIImage()
+        self.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
     }
 }
